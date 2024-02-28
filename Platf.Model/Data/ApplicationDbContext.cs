@@ -3,13 +3,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PlatF.Model.Entities;
 using PlatF.Model.WebApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PlatF.Model.Data
 {
-    
+
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
