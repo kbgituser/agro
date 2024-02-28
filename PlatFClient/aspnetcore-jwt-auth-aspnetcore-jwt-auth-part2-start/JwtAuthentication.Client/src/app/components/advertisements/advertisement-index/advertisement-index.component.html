@@ -1,0 +1,11 @@
+<p>advertisement-index works!</p>
+<a routerLink="/advertisements/create" routerLinkActive="active" >Добавить объявление</a>
+<br/>
+<br/>
+<div class="row" *ngFor="let adv of advertisementDtos, i as index">
+<div class="col-1">{{adv.name}}</div>
+<a routerLink="/advertisements/edit/{{adv.id}}" class="col-1">изменить</a>
+<div class="col-1">
+   <a [routerLink]="[]" (click)="deleteById(adv.id)" style="cursor: pointer">Удалить</a>
+</div> 
+</div>

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PlatF.Model.Entities
+@*@inject SignInManager<IdentityUser> SignInManager*@
+@inject SignInManager<ApplicationUser> SignInManager
+@*@inject UserManager<IdentityUser> UserManager*@
+@inject UserManager<ApplicationUser> UserManager
+@inject PlatF.Localization.LocService SharedLocalizer
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@SharedLocalizer.GetLocalizedHtmlString("You") @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">@SharedLocalizer.GetLocalizedHtmlString("Exit")</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@SharedLocalizer.GetLocalizedHtmlString("Register")</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@SharedLocalizer.GetLocalizedHtmlString("Login")</a>
+        </li>
+    }
+</ul>

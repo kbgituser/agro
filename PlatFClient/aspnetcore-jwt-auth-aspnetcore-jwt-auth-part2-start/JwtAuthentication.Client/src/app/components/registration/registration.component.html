@@ -1,0 +1,25 @@
+<p>registration works!</p>
+<div>
+    <mat-form-field appearance="fill">
+      <mat-label>Ваша почта</mat-label>
+      <input matInput placeholder="vasha@pochta.com" type="email" [(ngModel)]="email" required>
+    </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Ваш пароль</mat-label>
+    <input matInput [(ngModel)]="password" placeholder="Пароль" type="password" required>      
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Ваш номер телефона</mat-label>
+    <input matInput [(ngModel)]="phoneNumber" placeholder="Пароль" type="tel" required>      
+  </mat-form-field>
+</div>
+<button (click)="createUser()">Регистрация</button>
+
+    
+
+  
+

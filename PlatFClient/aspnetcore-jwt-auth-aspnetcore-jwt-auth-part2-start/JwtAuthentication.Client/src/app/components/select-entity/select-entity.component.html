@@ -1,0 +1,6 @@
+<label>{{title}}</label>
+<select [(ngModel)]='entityId' (change)="onChange($event.target.value)">
+    <option *ngFor="let entity of entities" [(value)]="entity.id">
+        {{entity.name}}
+    </option>
+</select>

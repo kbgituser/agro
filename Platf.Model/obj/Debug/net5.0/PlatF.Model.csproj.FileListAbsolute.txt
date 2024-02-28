@@ -1,0 +1,15 @@
+C:\kanat\Platf\PlatF.Model\bin\Debug\net5.0\PlatF.Model.deps.json
+C:\kanat\Platf\PlatF.Model\bin\Debug\net5.0\PlatF.Model.dll
+C:\kanat\Platf\PlatF.Model\bin\Debug\net5.0\PlatF.Model.pdb
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.csproj.AssemblyReference.cache
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.AssemblyInfoInputs.cache
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.AssemblyInfo.cs
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.csproj.CoreCompileInputs.cache
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.dll
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\refint\PlatF.Model.dll
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.pdb
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\ref\PlatF.Model.dll
+C:\kanat\Platf\PlatF.Model\bin\Debug\net5.0\PlatF.Model.runtimeconfig.json
+C:\kanat\Platf\PlatF.Model\bin\Debug\net5.0\PlatF.Model.runtimeconfig.dev.json
+C:\kanat\Platf\PlatF.Model\obj\Debug\net5.0\PlatF.Model.genruntimeconfig.cache

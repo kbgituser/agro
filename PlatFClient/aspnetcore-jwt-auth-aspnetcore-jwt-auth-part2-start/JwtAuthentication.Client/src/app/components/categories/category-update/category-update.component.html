@@ -1,0 +1,25 @@
+<p>Категории</p>
+<form (ngSubmit)="UpdateCategory()">
+    <div class="main">
+        <div class="input-fields">
+            <input name="name" [(ngModel)]="categoryDto.name" placeholder="Наименование категории" type="text" class="input-field">
+        </div>
+        <div class="input-fields">
+            <input name="code" [(ngModel)]="categoryDto.code" placeholder="Код" type="text" class="input-field">
+        </div>
+        <div class="input-fields">
+            <app-category-select [categoryId]="categoryDto.parentCategoryId" (onCategorySelected)="onChange($event)">
+
+            </app-category-select>
+            <br/>
+            <app-select-entity [entityId]="categoryDto.parentCategoryId" 
+            title='parent category'
+            [entities]="categories"
+            (onEntityChanged)="onChange($event)"
+            ></app-select-entity>
+        </div>
+        <input type="submit" value="Изменить город"> 
+        <a routerLink="/categories">Назад</a>
+    </div>
+</form>
+

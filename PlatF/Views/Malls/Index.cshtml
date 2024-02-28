@@ -1,0 +1,133 @@
+﻿@model IEnumerable<PlatF.Model.Entities.Mall>
+@inject PlatF.Localization.LocService SharedLocalizer
+@{
+    ViewData["Title"] = SharedLocalizer.GetLocalizedHtmlString("Malls");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">@SharedLocalizer.GetLocalizedHtmlString("Create")</a>
+</p>
+<paging total-records="@ViewBag.TotalRecords"
+        page-no="@ViewBag.PageNo"
+        page-size="@ViewBag.PageSize"
+        show-total-pages="false"
+        show-total-records="false"
+        show-page-size-nav="false">
+</paging>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfFloors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingExists)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingInsideExists)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingInsidePayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Smprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfFloors)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingExists)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingInsideExists)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingPayment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingInsidePayment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Smprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Details")</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+----
+<paging total-records="@ViewBag.TotalRecords"
+        page-no="@ViewBag.PageNo"
+        page-size="@ViewBag.PageSize"
+        show-total-pages="false"
+        show-total-records="false"
+        show-page-size-nav="false">
+</paging>
+----

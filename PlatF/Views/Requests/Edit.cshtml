@@ -1,0 +1,123 @@
+﻿@inject PlatF.Localization.LocService SharedLocalizer
+@model PlatF.Model.Entities.Request
+@using PlatF.Helpers
+@{
+    ViewData["Title"] = "Редактирование запроса";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>@ViewData["Title"]</h1>
+
+
+<hr />
+<div class="row" id="form">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" asp-items="ViewBag.Cities">
+                </select>
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories" 
+                        disabled="@(ViewBag.CanEdit ? null : "disabled" )"
+                        >
+                    @*//disabled=@(!ViewBag.CanEdit)*@
+                    <option>Выберите категорию</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+                <input asp-for="EntryDate" class="form-control" disabled/>
+                <span asp-validation-for="EntryDate" asp-format="{0:dd'/'MM'/'yyyy}" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestStatus" class="control-label"></label>
+                @Model.RequestStatus.GetDescription()
+            </div>            
+            <div class="form-group">
+                @if (Model.RequestStatus == PlatF.Model.Enums.RequestStatus.Created)
+                {
+                    <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Save")" class="btn btn-primary" />
+
+                    @*<a asp-controller="Requests"
+                       asp-action="SendToModeration"
+                       asp-route-id=@Model.Id
+                       class="btn btn-primary">
+                        Отправить на проверку
+                    </a>*@
+
+                    <button id="sendToModerate" class="btn btn-primary">
+                        Отправить на модерацию
+                    </button>
+                }
+                else
+                {
+                    <div>
+                        Запрос можно редактировать только до проверки.
+                    </div>
+                }
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back")</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(function () {
+        $("#sendToModerate").click(function () {
+            if (confirm("После отправки на модерацию вы не сможете изменить объявление! Вы уверены что хотите отправить объявление на проверку?")) {
+                $('#form').FormSubmit();
+            }
+            else {
+                return false;
+            }
+        });
+    }
+    )
+</script>
+}

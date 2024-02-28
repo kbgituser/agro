@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PlatF.Model.Entities.ApplicationUser>
+
+<h2>Список пользователей</h2>
+<table class="table">
+    @foreach (var user in Model)
+    {
+    <tr>
+        <td>@user.Email em</td>
+        <td>@user.PhoneNumber phone</td>
+        <td>@user.UserName name</td>
+        <td>
+            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+        </td>
+    </tr>
+    }
+</table>

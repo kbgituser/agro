@@ -1,0 +1,26 @@
+<h1>Home Page</h1>
+
+<br>
+<div *ngIf="isUserAuthenticated()" style="color:blue;">
+  <h2>
+    YOU ARE LOGGED IN
+  </h2>
+</div>
+
+<br>
+
+  <!-- <div>
+    <a routerLink="/customers">Customer</a>
+  </div>
+  <div>
+    <a routerLink="/customers">Customer</a>
+  </div> -->
+
+<ul>
+  <li><span><a routerLink="/customers">Customer</a></span> </li>
+  <li><span> <a routerLink="/cities">City</a></span> </li>
+  <li><a routerLink="/categories">Категории</a></li>
+  <li><a routerLink="/requests">Запросы</a></li>  
+  <li *ngIf="!isUserAuthenticated()"><a routerLink="/login">Login</a></li>
+  <li *ngIf="isUserAuthenticated()"><a class="logout" (click)="loginService.logOut()">Log out</a></li>
+</ul>

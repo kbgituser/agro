@@ -1,0 +1,7 @@
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.csproj.AssemblyReference.cache
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.AssemblyInfoInputs.cache
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.AssemblyInfo.cs
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.csproj.CoreCompileInputs.cache
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\kanat\Platf\WebApi\obj\Debug\net5.0\WebApi.MvcApplicationPartsAssemblyInfo.cache

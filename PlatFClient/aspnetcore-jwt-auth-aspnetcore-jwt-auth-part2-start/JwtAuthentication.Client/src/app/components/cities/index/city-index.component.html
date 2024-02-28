@@ -1,0 +1,14 @@
+
+<a routerLink="/cities/create" routerLinkActive="active" >Новый город</a>
+<br/>
+<br/>
+<div class="row" *ngFor="let city of cities, i as index">
+<div class="col-1">{{city.name}}</div>
+<a routerLink="/cities/edit/{{city.id}}" class="col-1">изменить</a>
+<div class="col-1">
+   <a [routerLink]="[]" (click)="deleteById(city.id)" style="cursor: pointer">Удалить</a>
+</div> 
+</div>
+
+
+  

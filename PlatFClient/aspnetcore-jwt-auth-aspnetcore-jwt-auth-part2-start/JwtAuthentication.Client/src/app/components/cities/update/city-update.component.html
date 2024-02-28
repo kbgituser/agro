@@ -1,0 +1,13 @@
+<form  (ngSubmit)="updateCity()">
+    <div class="main">
+        <div class="input-fields">
+            <input name="name" [(ngModel)]="cityDto.name" placeholder="Имя города" type="text" class="input-field">
+        </div>
+        <div class="input-fields">
+            <input name="code" [(ngModel)]="cityDto.code" placeholder="Код" type="number" class="input-field">
+        </div>
+        <input *ngIf="create" type="button" value="Сохранить город" (click)="createCity()">
+        <input *ngIf="edit" type="submit" value="Изменить город"> 
+        <a routerLink="/cities">В список</a>
+    </div>    
+</form>
