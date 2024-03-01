@@ -20,7 +20,7 @@ namespace PlatF.Model.Entities
         [Display(Name = "Запрос")]
         public int RequestId { get; set; }
         [Display(Name = "Запрос")]
-        public virtual Request Request { get; set; }
+        public virtual Intention Request { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:#,#}")]
         [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Можно вводить только цифры")]

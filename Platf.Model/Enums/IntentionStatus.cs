@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Agro.Model.Enums
+namespace PlatF.Model.Enums
 {
-    public enum RequestStatus
+    public enum IntentionStatus
     {
         //[Description("Созданый")]
         //Created = 0,

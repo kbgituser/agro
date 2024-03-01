@@ -9,22 +9,22 @@ namespace WebApi.Controllers
     [ApiController]
     public class RequestsController : ControllerBase
     {
-        private readonly IRequestService _requestService;
+        private readonly IIntentionService _intentionService;
 
-        public RequestsController(IRequestService requestService)
+        public RequestsController(IIntentionService requestService)
         {
-            _requestService = requestService;
+            _intentionService = requestService;
         }
 
         [HttpPost, Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RequestDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateAsync(RequestDto requestDto)
+        public async Task<IActionResult> CreateAsync(IntentionDto requestDto)
         {
             try
             {
-                await _requestService.Create(requestDto);
+                await _intentionService.Create(requestDto);
                 return Ok(requestDto.Id);
             }
             catch (Exception ex)
@@ -34,34 +34,34 @@ namespace WebApi.Controllers
         }
 
         [HttpGet, Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RequestDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllAsync()
         {
-            return Ok(await _requestService.GetAllAsync());
+            return Ok(await _intentionService.GetAllAsync());
         }
 
         //[HttpGet(), Authorize]
         [HttpGet()]
         [Route("ByPage")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RequestDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllByPageAsync(int? id = 1)
         {
-            return Ok(await _requestService.GetAllPagedAsync(1));
+            return Ok(await _intentionService.GetAllPagedAsync(1));
         }
 
         [HttpGet("{id:int}"), Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRequestById(int id)
         {
             try
             {
-                return Ok(await _requestService.GetRequestByIdAsync(id));
+                return Ok(await _intentionService.GetRequestByIdAsync(id));
             }
             catch (Exception ex)
             {
@@ -73,11 +73,11 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(RequestDto requestDto)
+        public async Task<IActionResult> Update(IntentionDto requestDto)
         {
             try
             {
-                await _requestService.Update(requestDto);
+                await _intentionService.Update(requestDto);
                 return Ok(requestDto.Id);
             }
             catch (Exception ex)
@@ -87,14 +87,14 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id:int}"), Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteById(int id)
         {
             try
             {
-                await _requestService.DeleteById(id);
+                await _intentionService.DeleteById(id);
                 return Ok();
             }
             catch (Exception ex)

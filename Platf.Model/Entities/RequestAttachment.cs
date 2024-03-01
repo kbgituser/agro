@@ -9,6 +9,6 @@ namespace PlatF.Model.Entities
     public class RequestAttachment : Attachment
     {
         public int RequestId { get; set; }
-        public virtual Request Request { get; set; }        
+        public virtual Intention Request { get; set; }        
     }
 }

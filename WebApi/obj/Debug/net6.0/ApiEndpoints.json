@@ -624,13 +624,13 @@
     "Parameters": [
       {
         "Name": "requestDto",
-        "Type": "PlatF.Model.Dto.Request.RequestDto",
+        "Type": "PlatF.Model.Dto.Request.IntentionDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.RequestDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.IntentionDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -664,7 +664,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.RequestDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.IntentionDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -698,7 +698,7 @@
     "Parameters": [
       {
         "Name": "requestDto",
-        "Type": "PlatF.Model.Dto.Request.RequestDto",
+        "Type": "PlatF.Model.Dto.Request.IntentionDto",
         "IsRequired": true
       }
     ],
@@ -744,7 +744,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "PlatF.Model.Dto.Request.RequestDto",
+        "Type": "PlatF.Model.Dto.Request.IntentionDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -784,7 +784,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "PlatF.Model.Dto.Request.RequestDto",
+        "Type": "PlatF.Model.Dto.Request.IntentionDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -824,7 +824,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.RequestDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[PlatF.Model.Dto.Request.IntentionDto, Agro.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -27,8 +27,10 @@ namespace PlatF.Model.UnitOfWork
 
 		public ICategoryRepository CategoryRepository => new CategoryRepository(_dbContext);
 		public ICityRepository CityRepository => new CityRepository(_dbContext);
-		public IRequestRepository RequestRepository => new RequestRepository(_dbContext);
-		public IOfferRepository OfferRepository => new OfferRepository(_dbContext);
+		public IIntentionRepository IntentionRepository => new IntentionRepository(_dbContext);
+        public IRequestRepository RequestRepository => new RequestRepsitory(_dbContext);
+
+        public IOfferRepository OfferRepository => new OfferRepository(_dbContext);
 		
 		public UserManager<ApplicationUser> UserManager  => _userManager;
 

@@ -15,6 +15,6 @@ namespace PlatF.Model.Entities
 
         [Display(Name = "Наименование города")]
         public override string Name { get; set; }
-        public virtual ICollection<Request> Requests { get; set; }
+        public virtual ICollection<Intention> Requests { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Agro.Model.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PlatF.Model.Entities;
@@ -15,7 +16,9 @@ namespace PlatF.Model.Data
         }
 
         public DbSet<LoginModel>? LoginModels { get; set; }
+        public DbSet<Intention> Intentions { get; set; }
         public DbSet<Request> Requests { get; set; }
+
         public DbSet<Offer> Offers { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -38,20 +41,15 @@ namespace PlatF.Model.Data
                     Password = "def@123"
                 });
 
-            builder.Entity<Offer>()
-                    .HasOne(r => r.Request)
-                    .WithMany(u => u.Offers)
-                    .HasForeignKey(o => o.RequestId)
-                    ;
+            
 
-            builder.Entity<Request>()
-                    .HasOne(r => r.Category)
-                    .WithMany(u => u.Requests)
-                    .HasForeignKey(o => o.CategoryId)
+            builder.Entity<Intention>()
+                    .HasOne(x=>x.Request)
+                    .WithMany(x=>x.Intentions)
                     .OnDelete(DeleteBehavior.SetNull)
                     ;
 
-            builder.Entity<Request>()
+            builder.Entity<Intention>()
                     .HasOne(r => r.City)
                     .WithMany(c => c.Requests)
                     .HasForeignKey(o => o.CityId)

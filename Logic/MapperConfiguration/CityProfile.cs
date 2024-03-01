@@ -30,7 +30,7 @@ namespace Logic.MapperConfiguration
 
             //.ReverseMap()
             ;
-            CreateMap<RequestDto, Request>().ReverseMap();
+            CreateMap<IntentionDto, Intention>().ReverseMap();
 
 
         }

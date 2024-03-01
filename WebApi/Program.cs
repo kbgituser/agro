@@ -124,7 +124,7 @@ builder.Services.AddAutoMapper(typeof(Logic.MapperConfiguration.CityProfile));
 
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IRequestService, RequestService>();
+builder.Services.AddScoped<IIntentionService, IntentionService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

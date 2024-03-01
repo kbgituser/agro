@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlatF.Model.Entities
 {
@@ -17,6 +13,12 @@ namespace PlatF.Model.Entities
 
         [Display(Name = "Дата создания")]
         public DateTime CreateDate { get; set; }
+
+        [Display(Name = "Город")]
+        public int? CityId { get; set; }
+        [Display(Name = "Город")]
+        public virtual City City { get; set; }
+
 
         //[EmailAddress(ErrorMessage = "Укажите корректный Email.")]
         ////[EmailAddress(ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = "EmailAddress")]

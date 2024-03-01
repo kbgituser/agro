@@ -1,7 +1,5 @@
-﻿using Agro.Logic.Interfaces;
-using Agro.Model.Entities;
-using Agro.Model.Enums;
-using AutoMapper;
+﻿using AutoMapper;
+using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using PlatF.Model.Dto.Request;
@@ -16,14 +14,14 @@ using System.Threading.Tasks;
 
 namespace Logic.Services
 {
-    public class RequestService : IRequestService
+    public class IntentionService : IIntentionService
     {
         private IUnitOfWork _unitOfWork;
-        private readonly ILogger<RequestService> _logger;
+        private readonly ILogger<IntentionService> _logger;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public RequestService(IUnitOfWork unitOfWork, ILogger<RequestService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public IntentionService(IUnitOfWork unitOfWork, ILogger<IntentionService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -31,30 +29,30 @@ namespace Logic.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<List<Request>> GetAllAsync()
+        public async Task<List<Intention>> GetAllAsync()
         {
-            return await _unitOfWork.RequestRepository.GetAllAsync();
+            return await _unitOfWork.IntentionRepository.GetAllAsync();
         }
 
-        public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize = 10)
+        public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize=10)
         {
             var result = await _unitOfWork.IntentionRepository.GetAllRequestsPagedAsync(p);
             List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
             //rDtoList.AsQueryable().AsAsyncEnumerable();
             return await PaginatedList<IntentionDto>.CreateAsync(
-                rDtoList.OrderBy(t => t.StartDate).AsQueryable(),
-                p.Value,
+                rDtoList.OrderBy(t => t.StartDate).AsQueryable(), 
+                p.Value, 
                 pageSize.Value);
         }
 
-        public async Task<PaginatedList<Request>> GetRequestsByStatusPagedAsync(RequestStatus status, int? p)
+        public async Task<PaginatedList<Intention>> GetRequestsByStatusPagedAsync(IntentionStatus status, int? p)
         {
-            return await _unitOfWork.RequestRepository.GetRequestsByStatusPagedAsync(status, p);
+            return await _unitOfWork.IntentionRepository.GetIntentionsByStatusPagedAsync(status, p);
         }
 
-        public async Task<Request> GetRequestByIdAsync(int id)
+        public async Task<Intention> GetRequestByIdAsync(int id)
         {
-            return await _unitOfWork.RequestRepository.GetRequestById(id);
+            return await _unitOfWork.IntentionRepository.GetIntentionById(id);
         }
 
         public async Task<bool> IsUsersRequest(int requestId, string usersId)
@@ -85,17 +83,17 @@ namespace Logic.Services
             await _unitOfWork.Commit();
         }
 
-        public async Task UpdateStatus(int id, RequestStatus status)
+        public async Task UpdateStatus(int id, IntentionStatus status)
         {
-            var req = (await _unitOfWork.RequestRepository.GetRequestById(id));
-            req.RequestStatus = status;
-            _unitOfWork.RequestRepository.Update(req);
+            var req = (await _unitOfWork.IntentionRepository.GetIntentionById(id));
+            req.IntentionStatus = status;
+            _unitOfWork.IntentionRepository.Update(req);
             await _unitOfWork.Commit();
         }
 
-        public async Task Delete(Request request)
+        public async Task Delete(Category category)
         {
-            _unitOfWork.RequestRepository.Delete(request);
+            _unitOfWork.CategoryRepository.Delete(category);
             await _unitOfWork.Commit();
         }
 

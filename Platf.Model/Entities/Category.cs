@@ -12,7 +12,7 @@ namespace PlatF.Model.Entities
         public Category(DateTime entryDate, bool isDeleted, string name, bool isActive, string code) : base(entryDate, isDeleted, name, isActive, code){}
         public Category() : base()
         {         }
-        public virtual ICollection<Request> Requests { get; set; }
+        public virtual ICollection<Intention> Requests { get; set; }
         public int? ParentCategoryId { get; set; }
         [Display(Name = "Родительская категория")]
         public virtual Category ParentCategory { get; set; }
