@@ -1,7 +1,6 @@
 ﻿using Agro.Model.Entities;
 using Agro.Model.Enums;
 using PlatF.Model.Dto.Request;
-using PlatF.Model.Enums;
 using PlatF.Model.PaginatedList;
 using System.Collections.Generic;
 using System.Threading.Tasks;

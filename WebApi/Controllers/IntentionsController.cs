@@ -1,4 +1,4 @@
-﻿using Agro.Logic.Interfaces;
+﻿using Logic.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlatF.Model.Dto.Request;
@@ -7,13 +7,13 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RequestsController : Controller
+    public class IntentionsController : ControllerBase
     {
-        private readonly IRequestService _requestService;
+        private readonly IIntentionService _intentionService;
 
-        public RequestsController(IRequestService requestService)
+        public IntentionsController(IIntentionService requestService)
         {
-            _requestService = requestService;
+            _intentionService = requestService;
         }
 
         [HttpPost, Authorize]
@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                await _requestService.Create(requestDto);
+                await _intentionService.Create(requestDto);
                 return Ok(requestDto.Id);
             }
             catch (Exception ex)
@@ -39,18 +39,18 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllAsync()
         {
-            return Ok(await _requestService.GetAllAsync());
+            return Ok(await _intentionService.GetAllAsync());
         }
 
         //[HttpGet(), Authorize]
-        [HttpGet(), Authorize]
+        [HttpGet()]
         [Route("ByPage")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllByPageAsync(int? id = 1)
         {
-            return Ok(await _requestService.GetAllPagedAsync(1));
+            return Ok(await _intentionService.GetAllPagedAsync(1));
         }
 
         [HttpGet("{id:int}"), Authorize]
@@ -61,7 +61,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(await _requestService.GetRequestByIdAsync(id));
+                return Ok(await _intentionService.GetRequestByIdAsync(id));
             }
             catch (Exception ex)
             {
@@ -77,7 +77,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                await _requestService.Update(requestDto);
+                await _intentionService.Update(requestDto);
                 return Ok(requestDto.Id);
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                await _requestService.DeleteById(id);
+                await _intentionService.DeleteById(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -102,5 +102,6 @@ namespace WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }
