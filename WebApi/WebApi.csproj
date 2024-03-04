@@ -22,8 +22,8 @@
   <ItemGroup>
     <!--<ProjectReference Include="..\Agro.Logic\Agro.Logic.csproj" />-->
     <!--<ProjectReference Include="..\Agro.Model\Agro.Model.csproj" />-->
+    <ProjectReference Include="..\Agro.Model\Agro.Model.csproj" />
     <ProjectReference Include="..\Logic\Agro.Logic.csproj" />
-    <ProjectReference Include="..\Platf.Model\Agro.Model.csproj" />
   </ItemGroup>
 
 </Project>

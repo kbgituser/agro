@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agro.Model", "Platf.Model\Agro.Model.csproj", "{7444C1A2-0B75-4241-92EE-C7AE7311F694}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agro.Model", "Agro.Model\Agro.Model.csproj", "{7444C1A2-0B75-4241-92EE-C7AE7311F694}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agro.Logic", "Logic\Agro.Logic.csproj", "{A0E30410-9369-4D3D-8594-EED6788AFE3E}"
 EndProject
