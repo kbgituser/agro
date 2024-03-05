@@ -155,3 +155,4 @@
 /Agro.Model/obj/PlatF.Model.csproj.nuget.g.targets
 /Agro.Model/obj/project.assets.json
 /Agro.Model/obj/project.nuget.cache
+/.config/dotnet-tools.json
