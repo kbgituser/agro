@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Logic.Interfaces;
 using Logic.MapperConfiguration;
 using Microsoft.Extensions.DependencyInjection;
+using Agro.Model.DataSeed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -175,5 +176,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+SampleData.Initialize(app.Services);
 
 app.Run();

@@ -63,7 +63,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Requests");
+                    b.ToTable("Requests", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -301,7 +301,7 @@ namespace Agro.Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Advertisements");
+                    b.ToTable("Advertisements", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.Category", b =>
@@ -334,7 +334,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.City", b =>
@@ -362,7 +362,7 @@ namespace Agro.Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.Intention", b =>
@@ -417,7 +417,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Intentions");
+                    b.ToTable("Intentions", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.Mall", b =>
@@ -480,7 +480,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Malls");
+                    b.ToTable("Malls", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.MallPhoto", b =>
@@ -501,7 +501,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("MallId");
 
-                    b.ToTable("MallPhotos");
+                    b.ToTable("MallPhotos", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.Offer", b =>
@@ -539,7 +539,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Offers");
+                    b.ToTable("Offers", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.Premise", b =>
@@ -614,7 +614,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Premises");
+                    b.ToTable("Premises", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.Entities.PremiseType", b =>
@@ -643,7 +643,7 @@ namespace Agro.Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PremiseTypes");
+                    b.ToTable("PremiseTypes", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.PremisePhoto", b =>
@@ -664,7 +664,7 @@ namespace Agro.Model.Migrations
 
                     b.HasIndex("PremiseId");
 
-                    b.ToTable("PremisePhotos");
+                    b.ToTable("PremisePhotos", (string)null);
                 });
 
             modelBuilder.Entity("PlatF.Model.WebApi.Models.LoginModel", b =>
@@ -689,7 +689,7 @@ namespace Agro.Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoginModels");
+                    b.ToTable("LoginModels", (string)null);
 
                     b.HasData(
                         new

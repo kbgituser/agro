@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PlatF.Model.Dto;
 using PlatF.Model.Entities;
-using System.IdentityModel.Tokens.Jwt;
 using WebApi.JwtFeatures;
 
 namespace WebApi.Controllers
@@ -21,15 +21,20 @@ namespace WebApi.Controllers
             _userManager = userManager;
         }
 
-
-
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] UserForRegistrationDto userForAuthentication)
+        public async Task<IActionResult> Login(
+            [FromBody] UserForRegistrationDto userForAuthentication
+        )
         {
             var user = await _userManager.FindByNameAsync(userForAuthentication.Email);
 
-            if (user == null || !await _userManager.CheckPasswordAsync(user, userForAuthentication.Password))
-                return Unauthorized(new AuthResponseDto { ErrorMessage = "Invalid Authentication" });
+            if (
+                user == null
+                || !await _userManager.CheckPasswordAsync(user, userForAuthentication.Password)
+            )
+                return Unauthorized(
+                    new AuthResponseDto { ErrorMessage = "Invalid Authentication" }
+                );
 
             var signingCredentials = _jwtHandler.GetSigningCredentials();
             var claims = _jwtHandler.GetClaims(user);
@@ -37,6 +42,42 @@ namespace WebApi.Controllers
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
             return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
+        }
+
+        [HttpPost("Registration")]
+        public async Task<IActionResult> Registration(
+            [FromBody] UserForRegistrationDto userForAuthentication
+        )
+        {
+            var user = await _userManager.FindByNameAsync(userForAuthentication.Email);
+
+            if (user is not null)
+            {
+                return Conflict("User already exists");
+            }
+
+            var creationResult = await _userManager.CreateAsync(user);
+
+            if (creationResult.Succeeded)
+            {
+                var signingCredentials = _jwtHandler.GetSigningCredentials();
+                var claims = _jwtHandler.GetClaims(user);
+                var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
+                var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+                return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
+            }
+            else
+            {
+                return BadRequest(
+                    new AuthResponseDto
+                    {
+                        ErrorMessage = string.Join(
+                            " |",
+                            creationResult.Errors.Select(x => x.Description)
+                        )
+                    }
+                );
+            }
         }
 
         [HttpGet, Authorize]

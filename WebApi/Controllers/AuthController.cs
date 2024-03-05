@@ -24,39 +24,8 @@ namespace WebApi.Controllers
         }
 
         [HttpPost, Route("login")]
-        //public async IActionResult Login([FromBody] LoginModel loginModel)
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-            //if (loginModel is null)
-            //{
-            //    return BadRequest("Invalid client request");
-            //}
-
-            //var user = _applicationDbContext.LoginModels.FirstOrDefault(u =>
-            //    (u.UserName == loginModel.UserName) && (u.Password == loginModel.Password));
-            //if (user is null)
-            //    return Unauthorized();
-
-            //var claims = new List<Claim>
-            //{
-            //    new Claim(ClaimTypes.Name, loginModel.UserName),
-            //    new Claim(ClaimTypes.NameIdentifier, loginModel.UserName),
-            //    new Claim(ClaimTypes.Role, "Manager")
-            //};
-            //var accessToken = _tokenService.GenerateAccessToken(claims);
-            //var refreshToken = _tokenService.GenerateRefreshToken();
-
-            //user.RefreshToken = refreshToken;
-            //user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
-
-            //_applicationDbContext.SaveChanges();
-
-            //return Ok(new AuthenticatedResponse
-            //{
-            //    Token = accessToken,
-            //    RefreshToken = refreshToken
-            //});
-
             try
             {
                 var result = await _tokenService.Login(loginModel);

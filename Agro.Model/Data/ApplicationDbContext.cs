@@ -33,6 +33,10 @@ namespace PlatF.Model.Data
         {
             base.OnModelCreating(builder);
 
+            SeedUsers(builder);
+            SeedRoles(builder);
+            SeedUserRoles(builder);
+
             builder.Entity<LoginModel>().HasData(
                 new LoginModel
                 {
@@ -109,9 +113,9 @@ namespace PlatF.Model.Data
 
         private void SeedUserRoles(ModelBuilder builder)
         {
-            //builder.Entity<IdentityUserRole<string>>().HasData(
-            //    new IdentityUserRole<string>() { RoleId = "fab4fac1-c546-41de-aebc-a14da6895711", UserId = "b74ddd14-6340-4840-95c2-db12554843e5" }
-            //    );
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>() { RoleId = "d0bcaf79-27ed-43f9-a531-55ae2bcb3053", UserId = "413eee48-aad2-42a1-813b-43a0cab467a8" }
+                );
         }
 
     }
