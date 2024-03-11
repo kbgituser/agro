@@ -156,3 +156,13 @@
 /Agro.Model/obj/project.assets.json
 /Agro.Model/obj/project.nuget.cache
 /.config/dotnet-tools.json
+/Agro.Model/bin/Release/net6.0/Agro.Model.deps.json
+/Agro.Model/bin/Release/net6.0/Agro.Model.pdb
+/Agro.Model/bin/Release/net6.0/Agro.Model.runtimeconfig.json
+/Agro.Model/obj/Release/net6.0
+/Logic/bin/Release/net6.0
+/Logic/obj/Release/net6.0
+*.pdb
+/PlatF/bin/Debug/net6.0/Agro.Logic.pdb
+/PlatF/bin/Debug/net6.0/refs/System.Runtime.Numerics.dll
+/PlatF/bin/Debug/net6.0/refs/System.Security.AccessControl.dll
