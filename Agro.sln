@@ -13,6 +13,8 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "PlatFClient", "PlatFClient\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testapi", "testapi\testapi.csproj", "{010EBE1F-7FD2-4562-8ADF-20ECE8E20BA6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlatF", "PlatF\PlatF.csproj", "{47462725-3845-4200-9AFA-0F2A15F631D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{010EBE1F-7FD2-4562-8ADF-20ECE8E20BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{010EBE1F-7FD2-4562-8ADF-20ECE8E20BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{010EBE1F-7FD2-4562-8ADF-20ECE8E20BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47462725-3845-4200-9AFA-0F2A15F631D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47462725-3845-4200-9AFA-0F2A15F631D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47462725-3845-4200-9AFA-0F2A15F631D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47462725-3845-4200-9AFA-0F2A15F631D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

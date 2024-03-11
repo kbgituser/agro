@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlatF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5296ec8b655c9359f632bddfc21320c9168dc9d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+628d277baa297e33fd2997ebd6abc14fc344bb8f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlatF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlatF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

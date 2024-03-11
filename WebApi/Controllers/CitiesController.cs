@@ -23,7 +23,8 @@ namespace WebApi.Controllers
 
 
         //[HttpGet, Authorize(AuthenticationSchemes ="Bearer")]
-        [HttpGet, Authorize]
+        //[HttpGet, Authorize]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type=typeof(List<CityDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
