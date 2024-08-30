@@ -1,8 +1,8 @@
 ﻿using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Dto.City;
-using PlatF.Model.Entities;
+using Agro.Model.Dto.City;
+using Agro.Model.Entities;
 using AuthorizeAttribute = Microsoft.AspNetCore.Authorization.AuthorizeAttribute;
 using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 //using System.Web.Http;
@@ -40,7 +40,9 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("{id:int}"), Authorize]
+        //[HttpGet("{id:int}"), Authorize]
+        [HttpGet("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CityDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

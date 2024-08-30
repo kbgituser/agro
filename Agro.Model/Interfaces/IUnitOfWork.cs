@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using PlatF.Model.Entities;
+using Agro.Model.Entities;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
     public interface IUnitOfWork
     {

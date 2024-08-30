@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
+using Agro.Model.Data;
+using Agro.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace PlatF.Helpers
+namespace Agro.Helpers
 {
     public class UserHelper
     {        

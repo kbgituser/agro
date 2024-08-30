@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Extensions;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Extensions;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller

@@ -1,12 +1,12 @@
-﻿using PlatF.Model.Dto.City;
-using PlatF.Model.Entities;
+﻿using Agro.Model.Dto.City;
+using Agro.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
     public interface IService<T> where T : BaseEntity
     {

@@ -1,13 +1,13 @@
-﻿using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
+﻿using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Repository
+namespace Agro.Model.Repository
 {
     public class CityRepository: AsyncRepository<City>, ICityRepository
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.PaginatedList
+namespace Agro.PaginatedList
 {
     public class PaginatedList<T> : List<T>
     {

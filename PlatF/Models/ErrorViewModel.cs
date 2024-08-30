@@ -1,6 +1,6 @@
 using System;
 
-namespace PlatF.Models
+namespace Agro.Models
 {
     public class ErrorViewModel
     {

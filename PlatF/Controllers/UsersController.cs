@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.ViewModel;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     public class UsersController : Controller
     {

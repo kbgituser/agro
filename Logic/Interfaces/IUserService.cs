@@ -1,6 +1,6 @@
-﻿using PlatF.Model.Dto.User;
-using PlatF.Model.Dto.UserRegistration;
-using PlatF.Model.Entities;
+﻿using Agro.Model.Dto.User;
+using Agro.Model.Dto.UserRegistration;
+using Agro.Model.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

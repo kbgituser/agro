@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace PlatF.Extension
+namespace Agro.Extension
 {
 	public static class UserExtension
 	{

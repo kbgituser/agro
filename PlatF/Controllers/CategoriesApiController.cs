@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
+using Agro.Model.Data;
+using Agro.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     
     [Route("api/[controller]")]

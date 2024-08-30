@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.ErrorDescriber
+namespace Agro.ErrorDescriber
 {
     public class RussianIdentityErrorDescriber : IdentityErrorDescriber
     {

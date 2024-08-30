@@ -1,8 +1,7 @@
-﻿using Agro.Model.Entities;
-using PlatF.Model.Enums;
+﻿using Agro.Model.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlatF.Model.Entities
+namespace Agro.Model.Entities
 {
     public class Intention: RefEntity
     {
@@ -26,10 +25,10 @@ namespace PlatF.Model.Entities
 
         [Display(Name = "Описание")]
         [DataType(DataType.MultilineText)]
-        //[Required(ErrorMessage ="Введите описание к запросу")]
         public string Message { get; set; }
 
         [Display(Name = "Статус")]
         public IntentionStatus IntentionStatus { get; set; }
+        public AnimalPart AnimalPart { get; set; }
     }
 }

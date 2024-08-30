@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using PlatF.Model.Dto.User;
-using PlatF.Model.Entities;
+using Agro.Model.Dto.User;
+using Agro.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

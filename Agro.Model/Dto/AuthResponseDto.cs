@@ -1,4 +1,4 @@
-﻿namespace PlatF.Model.Dto
+﻿namespace Agro.Model.Dto
 {
     public class AuthResponseDto
     {

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
+using Agro.Model.Data;
+using Agro.Model.Entities;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     public class PremiseTypesController : Controller
     {

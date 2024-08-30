@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using PlatF.Model.Data;
-using PlatF.Model.Dto.User;
-using PlatF.Model.Dto.UserRegistration;
-using PlatF.Model.Entities;
-using PlatF.Model.Exceptions;
-using PlatF.Model.Interfaces;
-using PlatF.Model.UnitOfWork;
+using Agro.Model.Data;
+using Agro.Model.Dto.User;
+using Agro.Model.Dto.UserRegistration;
+using Agro.Model.Entities;
+using Agro.Model.Exceptions;
+using Agro.Model.Interfaces;
+using Agro.Model.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +52,18 @@ namespace Logic.Services
                 PhoneNumber = userRegistrationDto.PhoneNumber,
                 CreateDate = DateTime.Now
             }, userRegistrationDto.Password);
+            
+            
+
             if (result.Succeeded)
             {
+                
+                var newUser =  await _userManager.FindByEmailAsync(userRegistrationDto.Email);
+                var userRole = _userManager.AddToRolesAsync
+                               (newUser, new string[] { "User" }).Result;
+
                 return await _userManager.FindByEmailAsync(userRegistrationDto.Email);
+
             }
             throw new UserException(string.Join(",", result.Errors.Select(x => x.Description)));
         }

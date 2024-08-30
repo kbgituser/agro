@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using PlatF.Model.Data;
+using Agro.Model.Data;
 using System.Text;
 using WebApi.JwtFeatures;
 using WebApi.Services;
 using AutoMapper;
-using PlatF.Model.Interfaces;
-using PlatF.Model.UnitOfWork;
+using Agro.Model.Interfaces;
+using Agro.Model.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
-using PlatF.Model.Entities;
+using Agro.Model.Entities;
 using Logic.Services;
 using Microsoft.OpenApi.Models;
 using Logic.Interfaces;
@@ -132,7 +132,6 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
 
 builder.Services.Configure<IdentityOptions>(
     (options) =>

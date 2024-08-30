@@ -1,7 +1,6 @@
-﻿using Agro.Model.Entities;
+﻿using Agro.Model.Dto.Request;
 using Agro.Model.Enums;
-using PlatF.Model.Dto.Request;
-using PlatF.Model.PaginatedList;
+using Agro.Model.PaginatedList;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,15 +8,17 @@ namespace Agro.Logic.Interfaces
 {
     public interface IRequestService
     {
-        Task Create(IntentionDto request);
-        Task Delete(Request request);
+        Task CreateAsync(RequestDto request);
         Task DeleteById(int id);
-        Task<List<Request>> GetAllAsync();
-        Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize = 10);
-        Task<Request> GetRequestByIdAsync(int id);
-        Task<PaginatedList<Request>> GetRequestsByStatusPagedAsync(RequestStatus status, int? p);
+        Task<List<RequestDto>> GetAllAsync();
+        Task<PaginatedList<RequestDto>> GetAllPagedAsync(int? p, int? pageSize = 10);
+        Task<RequestDto> GetRequestByIdAsync(int id);
+        Task<PaginatedList<RequestDto>> GetRequestsByStatusPagedAsync(RequestStatus status, int? p);
         Task<bool> IsUsersRequest(int requestId, string usersId);
-        Task Update(IntentionDto requestDto);
+        Task Update(RequestDto requestDto);
         Task UpdateStatus(int id, RequestStatus status);
+        Task ReleaseAsync(int id);
+        Task AssignToPerformerAsync(int id);
+
     }
 }

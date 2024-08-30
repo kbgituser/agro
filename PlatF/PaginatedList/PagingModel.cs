@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.PaginatedList
+namespace Agro.PaginatedList
 {
     public class PagingModel : PageModel
     {

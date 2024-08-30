@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.PaginatedList
+namespace Agro.Model.PaginatedList
 {
     public class PaginatedListExtension
     {

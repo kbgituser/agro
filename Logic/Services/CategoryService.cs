@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Logic.Interfaces;
 using Microsoft.Extensions.Logging;
-using PlatF.Model.Dto.Category;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.PaginatedList;
+using Agro.Model.Dto.Category;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.PaginatedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;

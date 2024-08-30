@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Dto
+namespace Agro.Model.Dto
 {
     public class RegistrationResponseDto
     {

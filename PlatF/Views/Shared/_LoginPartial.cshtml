@@ -1,10 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using PlatF.Model.Entities
+@using Agro.Model.Entities
 @*@inject SignInManager<IdentityUser> SignInManager*@
 @inject SignInManager<ApplicationUser> SignInManager
 @*@inject UserManager<IdentityUser> UserManager*@
 @inject UserManager<ApplicationUser> UserManager
-@inject PlatF.Localization.LocService SharedLocalizer
+@inject Agro.Localization.LocService SharedLocalizer
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))

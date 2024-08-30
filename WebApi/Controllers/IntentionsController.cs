@@ -1,7 +1,7 @@
 ﻿using Logic.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Dto.Request;
+using Agro.Model.Dto.Intention;
 
 namespace WebApi.Controllers
 {
@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                await _intentionService.Create(requestDto);
+                await _intentionService.CreateAsync(requestDto);
                 return Ok(requestDto.Id);
             }
             catch (Exception ex)

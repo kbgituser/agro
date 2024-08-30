@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using PlatF.Model.Dto.Category;
-using PlatF.Model.Dto.City;
-using PlatF.Model.Dto.Request;
-using PlatF.Model.Dto.User;
-using PlatF.Model.Entities;
-using PlatF.Model.PaginatedList;
+using Agro.Model.Dto.Category;
+using Agro.Model.Dto.City;
+using Agro.Model.Dto.Intention;
+using Agro.Model.Dto.User;
+using Agro.Model.Entities;
+using Agro.Model.PaginatedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;

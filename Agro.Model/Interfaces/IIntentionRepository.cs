@@ -1,10 +1,10 @@
-﻿using PlatF.Model.Entities;
-using PlatF.Model.Enums;
-using PlatF.Model.PaginatedList;
+﻿using Agro.Model.Entities;
+using Agro.Model.Enums;
+using Agro.Model.PaginatedList;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
     public interface IIntentionRepository: IAsyncRepository<Intention>
     {
@@ -12,6 +12,5 @@ namespace PlatF.Model.Interfaces
         Task<PaginatedList<Intention>> GetAllRequestsPagedAsync(int? p);
         Task<Intention> GetIntentionById(int id);
         Task<PaginatedList<Intention>> GetIntentionsByStatusPagedAsync(IntentionStatus status, int? id);
-        
     }
 }

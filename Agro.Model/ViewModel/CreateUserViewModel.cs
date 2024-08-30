@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.ViewModel
+namespace Agro.Model.ViewModel
 {
     public class CreateUserViewModel
     {

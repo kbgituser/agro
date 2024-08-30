@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlatF.Model.Exceptions
+namespace Agro.Model.Exceptions
 {
     public class PasswordDoesnMatchException : Exception
     {

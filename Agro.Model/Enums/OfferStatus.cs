@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PlatF.Model.Enums
+namespace Agro.Model.Enums
 {
     public enum OfferStatus
     {

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     public class PremisesController : Controller
     {

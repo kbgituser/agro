@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlatF.Model.Exceptions
+namespace Agro.Model.Exceptions
 {
     [Serializable]
     public class LoginException : Exception

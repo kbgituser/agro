@@ -1,5 +1,5 @@
-﻿using PlatF.Model.Dto.Advertisement;
-using PlatF.Model.PaginatedList;
+﻿using Agro.Model.Dto.Advertisement;
+using Agro.Model.PaginatedList;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

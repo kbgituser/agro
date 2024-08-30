@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Helpers;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
+using Agro.Helpers;
+using Agro.Model.Data;
+using Agro.Model.Entities;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     [Authorize]
     public class OffersController : Controller

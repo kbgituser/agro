@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PlatF.Model.Data;
+using Agro.Model.Data;
 
-[assembly: HostingStartup(typeof(PlatF.Areas.Identity.IdentityHostingStartup))]
-namespace PlatF.Areas.Identity
+[assembly: HostingStartup(typeof(Agro.Areas.Identity.IdentityHostingStartup))]
+namespace Agro.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

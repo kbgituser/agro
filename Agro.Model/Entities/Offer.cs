@@ -1,9 +1,9 @@
 ﻿
 
 using System.ComponentModel.DataAnnotations;
-using PlatF.Model.Enums;
+using Agro.Model.Enums;
 
-namespace PlatF.Model.Entities
+namespace Agro.Model.Entities
 {
     public class Offer: BaseEntity
     {

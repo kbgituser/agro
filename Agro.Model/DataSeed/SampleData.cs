@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
+using Agro.Model.Data;
+using Agro.Model.Entities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +18,7 @@ namespace Agro.Model.DataSeed
                 var scopedServiceProviderscope = scope.ServiceProvider;
                 var context = scopedServiceProviderscope.GetRequiredService<ApplicationDbContext>();
 
-                string[] roles = new string[] { "Owner", "Administrator", "Manager", "Editor", "Buyer", "Business", "Seller", "Subscriber" };
+                string[] roles = new string[] { "Owner", "Administrator", "Manager", "Editor", "Buyer", "Business", "Seller", "Subscriber" , "User"};
 
                 foreach (string roleNames in roles)
                 {

@@ -1,0 +1,11 @@
+export * from './auth.service';
+import { AuthService } from './auth.service';
+export * from './cities.service';
+import { CitiesService } from './cities.service';
+export * from './intentions.service';
+import { IntentionsService } from './intentions.service';
+export * from './requests.service';
+import { RequestsService } from './requests.service';
+export * from './users.service';
+import { UsersService } from './users.service';
+export const APIS = [AuthService, CitiesService, IntentionsService, RequestsService, UsersService];

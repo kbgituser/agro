@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Dto.User
+namespace Agro.Model.Dto.User
 {
     public class UserDto
     {

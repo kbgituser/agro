@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Requests\**" />
+    <Compile Remove="Views\Users\**" />
+    <Content Remove="Views\Requests\**" />
+    <Content Remove="Views\Users\**" />
+    <EmbeddedResource Remove="Views\Requests\**" />
+    <EmbeddedResource Remove="Views\Users\**" />
+    <None Remove="Views\Requests\**" />
+    <None Remove="Views\Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="LazZiya.TagHelpers" Version="6.0.0" />
@@ -24,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Logic\Logic.csproj" />
-    <ProjectReference Include="..\PlatF.Model\Agro.Model.csproj" />
+    <ProjectReference Include="..\Agro.Model\Agro.Model.csproj" />
+    <ProjectReference Include="..\Logic\Agro.Logic.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,8 @@
 ﻿using Agro.Logic.Interfaces;
+using Agro.Model.Dto.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Dto.Request;
+using Agro.Model.Dto.Intention;
 
 namespace WebApi.Controllers
 {
@@ -16,25 +17,25 @@ namespace WebApi.Controllers
             _requestService = requestService;
         }
 
-        [HttpPost, Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateAsync(IntentionDto requestDto)
-        {
-            try
-            {
-                await _requestService.Create(requestDto);
-                return Ok(requestDto.Id);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpPost, Authorize]
+        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
+        //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<IActionResult> CreateAsync(RequestDto requestDto)
+        //{
+        //    try
+        //    {
+        //        await _requestService.CreateAsync(requestDto);
+        //        return Ok(requestDto.Id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
         [HttpGet, Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RequestDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllAsync()
@@ -42,10 +43,9 @@ namespace WebApi.Controllers
             return Ok(await _requestService.GetAllAsync());
         }
 
-        //[HttpGet(), Authorize]
         [HttpGet(), Authorize]
         [Route("ByPage")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RequestDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllByPageAsync(int? id = 1)
@@ -54,7 +54,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id:int}"), Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRequestById(int id)
@@ -73,7 +73,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(IntentionDto requestDto)
+        public async Task<IActionResult> Update(RequestDto requestDto)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("{id:int}"), Authorize]
+        [HttpDelete("{id:int}"), Authorize("Admin")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -95,6 +95,43 @@ namespace WebApi.Controllers
             try
             {
                 await _requestService.DeleteById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id:int}"), Authorize("Business")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ReleaseById(int id)
+        {
+            try
+            {
+                await _requestService.ReleaseAsync(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("assign/id")]
+        [HttpPut(), Authorize("Business")]
+
+        //[HttpPut("{id:int}"), Authorize("Business")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IntentionDto))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AssignToPerformer(int id)
+        {
+            try
+            {
+                await _requestService.ReleaseAsync(id);
                 return Ok();
             }
             catch (Exception ex)

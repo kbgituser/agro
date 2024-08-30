@@ -1,15 +1,12 @@
 ﻿
+using Agro.Model.Data;
+using Agro.Model.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace PlatF.Initializer
+namespace Agro.Initializer
 {
     public static class DbInitializer
     {
@@ -21,7 +18,7 @@ namespace PlatF.Initializer
                 context.Database.EnsureCreated();
 
                 var _userManager =
-                         serviceScope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
+                         serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 var _roleManager =
                          serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
@@ -48,10 +45,16 @@ namespace PlatF.Initializer
                     var role = _roleManager.CreateAsync
                                (new IdentityRole { Name = "Moderator" }).Result;
                 }
+                
+                if (!_roleManager.RoleExistsAsync("User").Result)
+                {
+                    var role = _roleManager.CreateAsync
+                               (new IdentityRole { Name = "User" }).Result;
+                }
 
-                var adminUser = _userManager.FindByNameAsync("admin@ad.me").Result;
-                var userRole = _userManager.AddToRolesAsync
-                               (adminUser, new string[] { "Admin" }).Result;
+                //var adminUser = _userManager.FindByNameAsync("admin@ad.me").Result;
+                //var userRole = _userManager.AddToRolesAsync
+                //               (adminUser, new string[] { "Admin" }).Result;
 
 
                 context.SaveChanges();

@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.Repository;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.UnitOfWork
+namespace Agro.Model.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
 	{

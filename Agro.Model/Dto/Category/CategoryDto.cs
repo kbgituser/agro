@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PlatF.Model.Dto.Category
+namespace Agro.Model.Dto.Category
 {
     public class CategoryDto
     {

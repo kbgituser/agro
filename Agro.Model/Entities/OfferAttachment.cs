@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Entities
+namespace Agro.Model.Entities
 {
     public class OfferAttachment : Attachment
     {

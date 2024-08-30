@@ -2,11 +2,11 @@
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using PlatF.Model.Dto.Request;
-using PlatF.Model.Entities;
-using PlatF.Model.Enums;
-using PlatF.Model.Interfaces;
-using PlatF.Model.PaginatedList;
+using Agro.Model.Dto.Intention;
+using Agro.Model.Entities;
+using Agro.Model.Enums;
+using Agro.Model.Interfaces;
+using Agro.Model.PaginatedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -29,18 +29,18 @@ namespace Logic.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<List<Intention>> GetAllAsync()
+        public async Task<List<IntentionDto>> GetAllAsync()
         {
-            return await _unitOfWork.IntentionRepository.GetAllAsync();
+            return _mapper.Map<List<IntentionDto>>
+                (await _unitOfWork.IntentionRepository.GetAllAsync());
         }
 
         public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize=10)
         {
             var result = await _unitOfWork.IntentionRepository.GetAllRequestsPagedAsync(p);
             List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
-            //rDtoList.AsQueryable().AsAsyncEnumerable();
             return await PaginatedList<IntentionDto>.CreateAsync(
-                rDtoList.OrderBy(t => t.StartDate).AsQueryable(), 
+                rDtoList.AsQueryable(), 
                 p.Value, 
                 pageSize.Value);
         }
@@ -61,45 +61,39 @@ namespace Logic.Services
             return request.UserId == usersId;
         }
 
-        public async Task Create(IntentionDto request)
+        public async Task CreateAsync(IntentionDto request)
         {
-            var creatingRequest = _mapper.Map<Intention>(request);
+            var creatingIntention = _mapper.Map<Intention>(request);
             string userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            creatingRequest.UserId = userId;
-            _unitOfWork.IntentionRepository.Add(creatingRequest);
-
+            creatingIntention.UserId = userId;
+            _unitOfWork.IntentionRepository.Add(creatingIntention);
             await _unitOfWork.Commit();
+            _unitOfWork.RequestRepository.GroupIntentionsToRequest();
+            //await 
+            _unitOfWork.Commit();
         }
         public async Task Update(IntentionDto requestDto)
         {
-            //var request = _mapper.Map<Request>(requestDto);
-            var req = (await _unitOfWork.IntentionRepository.GetIntentionById(requestDto.Id));
-            req.Name = requestDto.Name;
-            req.CityId = requestDto.CityId;
-            req.Message = requestDto.Message;
-            req.IntentionStatus = requestDto.IntentionStatus;
-            _unitOfWork.IntentionRepository.Update(req);
+            var updatedIntention = (await _unitOfWork.IntentionRepository.GetIntentionById(requestDto.Id));
+            updatedIntention.Name = requestDto.Name;
+            updatedIntention.CityId = requestDto.CityId;
+            updatedIntention.Message = requestDto.Message;
+            updatedIntention.IntentionStatus = requestDto.IntentionStatus;
+            _unitOfWork.IntentionRepository.Update(updatedIntention);
             await _unitOfWork.Commit();
         }
 
         public async Task UpdateStatus(int id, IntentionStatus status)
         {
-            var req = (await _unitOfWork.IntentionRepository.GetIntentionById(id));
-            req.IntentionStatus = status;
-            _unitOfWork.IntentionRepository.Update(req);
-            await _unitOfWork.Commit();
-        }
-
-        public async Task Delete(Category category)
-        {
-            _unitOfWork.CategoryRepository.Delete(category);
+            var updatedIntention = (await _unitOfWork.IntentionRepository.GetIntentionById(id));
+            updatedIntention.IntentionStatus = status;
+            _unitOfWork.IntentionRepository.Update(updatedIntention);
             await _unitOfWork.Commit();
         }
 
         public async Task DeleteById(int id)
         {
-            _unitOfWork.CategoryRepository.DeleteById(id);
+            _unitOfWork.IntentionRepository.DeleteById(id);
             await _unitOfWork.Commit();
         }
     }

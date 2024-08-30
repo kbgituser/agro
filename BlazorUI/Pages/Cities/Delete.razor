@@ -1,0 +1,67 @@
+﻿@page "/cities/delete/{cityId:int}"
+
+@using Agro.Model.Dto.City
+
+
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+
+<h3>Delete</h3>
+CityId parameter is @cityId!
+<EditForm Model="@City">
+    <div>
+        <p>
+            Код:<br />
+            <InputText class="form-control" @bind-Value="City.Code" disabled="disabled" />
+            <div>@City.Code</div>
+        </p>
+        <p>
+            Наименование:<br />
+            <input  @bind-value="City.Name" />
+            <div>@City.Name</div>
+        </p>
+        <p>
+            <button @onclick="Submit">Удалить</button>
+        </p>
+        код @statusCode
+        content @content
+
+    </div>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int cityId { get; set; }
+    private CityDto City = new();
+    string statusCode = "";
+    string content = "";
+
+    protected override async Task OnParametersSetAsync()
+    {
+        City = new CityDto();
+        City.Code = "432432";
+        City.Name = "432432";
+
+        if (cityId != 0)
+        {
+            var t = await Http.GetAsync("https://localhost:7272/api/Cities/" + cityId);
+
+            if (t.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                City = (await t.Content.ReadFromJsonAsync<CityDto>())!;
+            }
+        }
+    }
+
+    protected async Task Submit()
+    {
+        if (City.Id!= 0)
+        {
+            await Http.DeleteAsync("api/Cities"+City.Id);
+        }
+        
+        NavigationManager.NavigateTo("/Cities");
+    }
+}

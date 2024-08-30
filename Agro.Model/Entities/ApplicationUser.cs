@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlatF.Model.Entities
+namespace Agro.Model.Entities
 {
     public class ApplicationUser: IdentityUser
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.PaginatedList;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.PaginatedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Repository
+namespace Agro.Model.Repository
 {
 	public class AsyncRepository<T> : IAsyncRepository<T> where T : BaseEntity
 	{

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using PlatF.Model.Dto.Category;
-using PlatF.Model.Dto.City;
-using PlatF.Model.Entities;
+using Agro.Model.Dto.Category;
+using Agro.Model.Dto.City;
+using Agro.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,7 @@
-﻿using PlatF.Model.Entities;
-using PlatF.Model.Repository;
+﻿using Agro.Model.Entities;
+using Agro.Model.Repository;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
     public interface IOfferRepository: IAsyncRepository<Offer>
     {

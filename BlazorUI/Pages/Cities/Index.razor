@@ -1,0 +1,54 @@
+﻿@using Agro.Model.Dto.City
+<h3>Cities</h3>
+<PageTitle>Cities</PageTitle>
+@page "/cities"
+@inject HttpClient Http
+
+<h1>Cities</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (cities == null)
+{
+    <p><em>Loading...3245</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code(C)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var city in cities)
+            {
+                <tr>
+                    <td>@city.Name</td>
+                    <td>@city.Code</td>
+                    <td>
+                        <a href='/cities/edit/@city.Id' class="btn btn-outline-dark" role="button">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a href='/cities/delete/@city.Id' class="btn btn-outline-dark" role="button">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>                
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private CityDto[]? cities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await Http.GetFromJsonAsync<CityDto[]>("https://localhost:7272/api/Cities");
+    }
+}

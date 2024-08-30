@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace PlatF.Localization
+namespace Agro.Localization
 {
     public class LocService
     {

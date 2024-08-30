@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using PlatF.Model.Dto.City;
-using PlatF.Model.Entities;
+using Agro.Model.Dto.City;
+using Agro.Model.Entities;
 
 namespace Logic.MapperConfiguration
 {

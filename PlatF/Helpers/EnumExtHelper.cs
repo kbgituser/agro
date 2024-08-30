@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Helpers{
+namespace Agro.Helpers{
     public static class EnumExtHelper{
 
         ///// <summary>

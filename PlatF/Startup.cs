@@ -1,29 +1,24 @@
+using AutoMapper;
+using Logic.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using PlatF.Data;
-using PlatF.Localization;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.Repository;
-using PlatF.Model.UnitOfWork;
-using System.Threading.Tasks;
-using PlatF.Initializer;
-using PlatF.ErrorDescriber;
-using Logic.Services;
-using AutoMapper;
+using Agro.ErrorDescriber;
+using Agro.Initializer;
+using Agro.Localization;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.Repository;
+using Agro.Model.UnitOfWork;
 using AutMapperConfiguration = Logic.MapperConfiguration;
 
-namespace PlatF
+namespace Agro
 {
     public class Startup
     {

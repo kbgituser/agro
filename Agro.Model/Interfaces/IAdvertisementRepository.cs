@@ -1,6 +1,6 @@
-﻿using PlatF.Model.Entities;
+﻿using Agro.Model.Entities;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
     public interface IAdvertisementRepository: IAsyncRepository<Advertisement>
     {

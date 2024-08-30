@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Authorization;
-using PlatF.Model.Entities;
-using PlatF.Model.ViewModel;
+using Agro.Model.Entities;
+using Agro.Model.ViewModel;
 
-namespace PlatF.Controllers
+namespace Agro.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class RolesController : Controller

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Logic.Interfaces;
 using Microsoft.Extensions.Logging;
-using PlatF.Model.Dto.City;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.PaginatedList;
-using PlatF.Model.UnitOfWork;
+using Agro.Model.Dto.City;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.PaginatedList;
+using Agro.Model.UnitOfWork;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

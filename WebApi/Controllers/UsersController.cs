@@ -1,9 +1,7 @@
-﻿using Logic.Interfaces;
+﻿using Agro.Model.Dto.UserRegistration;
 using Logic.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PlatF.Model.Dto.User;
-using PlatF.Model.Dto.UserRegistration;
 
 namespace WebApi.Controllers
 {
@@ -27,6 +25,7 @@ namespace WebApi.Controllers
             try
             {
                 var createdUser =  await _userService.Create(userRegistrationDto);
+                
                 return Ok();
             }
             catch (Exception ex)

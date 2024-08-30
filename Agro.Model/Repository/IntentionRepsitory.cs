@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Interfaces;
-using PlatF.Model.PaginatedList;
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.PaginatedList;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Agro.Model.UnitOfWork;
 
-namespace PlatF.Model.Repository
+namespace Agro.Model.Repository
 {
     public class IntentionRepository: AsyncRepository<Intention>, IIntentionRepository
     {

@@ -1,12 +1,12 @@
-﻿using PlatF.Model.Entities;
-using PlatF.Model.PaginatedList;
+﻿using Agro.Model.Entities;
+using Agro.Model.PaginatedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Interfaces
+namespace Agro.Model.Interfaces
 {
 	public interface IAsyncRepository<T> where T : BaseEntity
 	{

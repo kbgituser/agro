@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.ViewModel
+namespace Agro.Model.ViewModel
 {
     using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;

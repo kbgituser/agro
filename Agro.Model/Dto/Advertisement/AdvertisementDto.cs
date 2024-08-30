@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatF.Model.Dto.Advertisement
+namespace Agro.Model.Dto.Advertisement
 {
     public class AdvertisementDto
     {

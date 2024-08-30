@@ -1,11 +1,9 @@
 ﻿using Agro.Model.Entities;
-using Microsoft.AspNetCore.Identity;
+using Agro.Model.WebApi.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PlatF.Model.Entities;
-using PlatF.Model.WebApi.Models;
 
-namespace PlatF.Model.Data
+namespace Agro.Model.Data
 {
 
     public class ApplicationDbContext : IdentityDbContext
@@ -33,9 +31,9 @@ namespace PlatF.Model.Data
         {
             base.OnModelCreating(builder);
 
-            SeedUsers(builder);
-            SeedRoles(builder);
-            SeedUserRoles(builder);
+            //SeedUsers(builder);
+            //SeedRoles(builder);
+            //SeedUserRoles(builder);
 
             builder.Entity<LoginModel>().HasData(
                 new LoginModel
@@ -91,32 +89,32 @@ namespace PlatF.Model.Data
 
         }
 
-        private void SeedUsers(ModelBuilder builder)
-        {
-            ApplicationUser user = new ApplicationUser()
-            {
-                UserName = "Admin",
-                Email = "admin@ad.me"
-            };
-            //var passwordHash = _userManager.PasswordHasher.HashPassword(user, "Test");
-            //user.PasswordHash = passwordHash;
+        //private void SeedUsers(ModelBuilder builder)
+        //{
+        //    ApplicationUser user = new ApplicationUser()
+        //    {
+        //        UserName = "Admin",
+        //        Email = "admin@ad.me"
+        //    };
+        //    //var passwordHash = _userManager.PasswordHasher.HashPassword(user, "Test");
+        //    //user.PasswordHash = passwordHash;
 
-            builder.Entity<ApplicationUser>().HasData(user);
-        }
+        //    builder.Entity<ApplicationUser>().HasData(user);
+        //}
 
-        private void SeedRoles(ModelBuilder builder)
-        {
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" }
-                );
-        }
+        //private void SeedRoles(ModelBuilder builder)
+        //{
+        //    builder.Entity<IdentityRole>().HasData(
+        //        new IdentityRole() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" }
+        //        );
+        //}
 
-        private void SeedUserRoles(ModelBuilder builder)
-        {
-            builder.Entity<IdentityUserRole<string>>().HasData(
-                new IdentityUserRole<string>() { RoleId = "d0bcaf79-27ed-43f9-a531-55ae2bcb3053", UserId = "413eee48-aad2-42a1-813b-43a0cab467a8" }
-                );
-        }
+        //private void SeedUserRoles(ModelBuilder builder)
+        //{
+        //    builder.Entity<IdentityUserRole<string>>().HasData(
+        //        new IdentityUserRole<string>() { RoleId = "d0bcaf79-27ed-43f9-a531-55ae2bcb3053", UserId = "413eee48-aad2-42a1-813b-43a0cab467a8" }
+        //        );
+        //}
 
     }
 }

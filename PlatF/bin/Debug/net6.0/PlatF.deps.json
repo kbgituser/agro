@@ -34,10 +34,11 @@
     ".NETCoreApp,Version=v6.0": {
       "PlatF/1.0.0": {
         "dependencies": {
+          "Agro.Logic": "1.0.0",
+          "Agro.Model": "1.0.0",
           "AutoMapper.Contrib.Autofac.DependencyInjection": "6.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
           "LazZiya.TagHelpers": "6.0.0",
-          "Logic": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
           "Microsoft.AspNetCore.Identity.UI": "6.0.0",
@@ -46,7 +47,6 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.0",
-          "PlatF.Model": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "6.0.0.0",
@@ -3113,21 +3113,21 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "Logic/1.0.0": {
+      "Agro.Logic/1.0.0": {
         "dependencies": {
+          "Agro.Model": "1.0.0",
           "AutoMapper": "12.0.0",
           "LazZiya.TagHelpers": "6.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.0",
-          "PlatF.Model": "1.0.0"
+          "Microsoft.EntityFrameworkCore": "6.0.0"
         },
         "runtime": {
-          "Logic.dll": {}
+          "Agro.Logic.dll": {}
         },
         "compile": {
-          "Logic.dll": {}
+          "Agro.Logic.dll": {}
         }
       },
-      "PlatF.Model/1.0.0": {
+      "Agro.Model/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
@@ -3135,10 +3135,10 @@
           "Microsoft.Extensions.Identity.Stores": "6.0.0"
         },
         "runtime": {
-          "PlatF.Model.dll": {}
+          "Agro.Model.dll": {}
         },
         "compile": {
-          "PlatF.Model.dll": {}
+          "Agro.Model.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/6.0.0.0": {
@@ -6263,12 +6263,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "Logic/1.0.0": {
+    "Agro.Logic/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "PlatF.Model/1.0.0": {
+    "Agro.Model/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

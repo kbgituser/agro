@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testapi", "testapi\testapi.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlatF", "PlatF\PlatF.csproj", "{47462725-3845-4200-9AFA-0F2A15F631D4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorUI", "BlazorUI\BlazorUI.csproj", "{3433F3B6-F7DA-4379-87AC-BF4262E945D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{47462725-3845-4200-9AFA-0F2A15F631D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47462725-3845-4200-9AFA-0F2A15F631D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47462725-3845-4200-9AFA-0F2A15F631D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3433F3B6-F7DA-4379-87AC-BF4262E945D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3433F3B6-F7DA-4379-87AC-BF4262E945D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3433F3B6-F7DA-4379-87AC-BF4262E945D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3433F3B6-F7DA-4379-87AC-BF4262E945D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

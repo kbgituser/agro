@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Exceptions;
+using Agro.Model.WebApi.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using PlatF.Model.Data;
-using PlatF.Model.Entities;
-using PlatF.Model.Exceptions;
-using PlatF.Model.WebApi.Models;
 using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.Serialization;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,7 +17,7 @@ namespace WebApi.Services
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _applicationDbContext;
-
+        
         public TokenService(UserManager<ApplicationUser> userManager, ApplicationDbContext applicationDbContext, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
@@ -90,6 +89,9 @@ namespace WebApi.Services
                 (u.UserName == loginModel.UserName) 
                 //&& (u.Password == loginModel.Password)                
                 );
+                var userDb = await _userManager.FindByNameAsync(loginModel.UserName);
+                var roles = await _userManager.GetRolesAsync(userDb);
+                
 
                 var claims = new List<Claim>
                 {
@@ -98,9 +100,16 @@ namespace WebApi.Services
                     new Claim("Username", loginModel.UserName),
 
                     new Claim("Role", "Manager"),
-                    new Claim("Role", "User")
+                    new Claim("Role", "Business"),
+                    new Claim(ClaimTypes.NameIdentifier, userDb.Id)
 
                 };
+
+                foreach (var role in roles)
+                {
+                    claims.Add(new Claim("Role", role));
+                }
+
                 var accessToken = GenerateAccessToken(claims);
                 var refreshToken = GenerateRefreshToken();
 
