@@ -166,6 +166,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "The Api V1");
     });
+    app.UseExceptionHandler("/Error");
 }
 app.UseCors("EnableCORS");
 app.UseHttpsRedirection();
@@ -176,6 +177,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-SampleData.Initialize(app.Services);
+//SampleData.Initialize(app.Services);
 
 app.Run();

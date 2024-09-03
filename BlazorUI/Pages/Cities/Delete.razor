@@ -46,7 +46,7 @@ CityId parameter is @cityId!
 
         if (cityId != 0)
         {
-            var t = await Http.GetAsync("https://localhost:7272/api/Cities/" + cityId);
+            var t = await Http.GetAsync("http://localhost:7272/api/Cities/" + cityId);
 
             if (t.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -59,7 +59,8 @@ CityId parameter is @cityId!
     {
         if (City.Id!= 0)
         {
-            await Http.DeleteAsync("api/Cities"+City.Id);
+            var t = await Http.DeleteAsync("http://localhost:7272/api/Cities" + City.Id);
+            
         }
         
         NavigationManager.NavigateTo("/Cities");

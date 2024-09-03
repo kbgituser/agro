@@ -49,6 +49,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        cities = await Http.GetFromJsonAsync<CityDto[]>("https://localhost:7272/api/Cities");
+        cities = await Http.GetFromJsonAsync<CityDto[]>("http://localhost:7272/api/Cities");
     }
 }
