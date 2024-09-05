@@ -311,3 +311,17 @@
 /PlatF/obj/Debug/net6.0/PlatF.RazorAssemblyInfo.cs
 /Logic/obj/Debug/net6.0/Agro.Logic.assets.cache
 /Logic/obj/Agro.Logic.csproj.nuget.g.props
+/MVC/bin/Debug/net8.0/appsettings.json
+/MVC/bin/Debug/net8.0/MVC.deps.json
+/MVC/obj/MVC.csproj.nuget.dgspec.json
+/MVC/obj/MVC.csproj.nuget.g.props
+/MVC/obj/project.assets.json
+/MVC/obj/project.nuget.cache
+/MVC/obj/Debug/net8.0/ApiEndpoints.json
+/MVC/obj/Debug/net8.0/MVC.AssemblyInfo.cs
+/MVC/obj/Debug/net8.0/MVC.AssemblyInfoInputs.cache
+/MVC/obj/Debug/net8.0/MVC.assets.cache
+/MVC/obj/Debug/net8.0/MVC.csproj.AssemblyReference.cache
+/MVC/obj/Debug/net8.0/MVC.csproj.CoreCompileInputs.cache
+/MVC/obj/Debug/net8.0/MVC.csproj.FileListAbsolute.txt
+/MVC/obj/Debug/net8.0/MVC.sourcelink.json
