@@ -1,4 +1,5 @@
 ﻿using Agro.Model.Data;
+using Agro.Model.Dto.User;
 using Agro.Model.Entities;
 using Agro.Model.Exceptions;
 using Agro.Model.WebApi.Models;
@@ -75,21 +76,21 @@ namespace WebApi.Services
 
 
 
-        public async Task<AuthenticatedResponse> Login(LoginModel loginModel)
+        public async Task<AuthenticatedResponse> Login(Login loginModel)
         {
             if (loginModel is null)
             {
                 throw new LoginException("Login and password are empty");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(loginModel.UserName, loginModel.Password, false, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(loginModel.Name, loginModel.Password, false, lockoutOnFailure: false);
             if (result.Succeeded)
             {
                 var user = _applicationDbContext.LoginModels.FirstOrDefault(u =>
-                (u.UserName == loginModel.UserName) 
+                (u.UserName == loginModel.Name) 
                 //&& (u.Password == loginModel.Password)                
                 );
-                var userDb = await _userManager.FindByNameAsync(loginModel.UserName);
+                var userDb = await _userManager.FindByNameAsync(loginModel.Name);
                 var roles = await _userManager.GetRolesAsync(userDb);
                 
 
@@ -97,7 +98,7 @@ namespace WebApi.Services
                 {
                     //new Claim(ClaimTypes.Name, loginModel.UserName),
                     //new Claim(ClaimTypes.NameIdentifier, loginModel.UserName),
-                    new Claim("Username", loginModel.UserName),
+                    new Claim("Username", loginModel.Name),
 
                     new Claim("Role", "Manager"),
                     new Claim("Role", "Business"),
@@ -118,7 +119,7 @@ namespace WebApi.Services
                 {
                     user = new LoginModel()
                     {
-                        UserName = loginModel.UserName
+                        UserName = loginModel.Name
                     };
                     user.RefreshToken = refreshToken;
                     user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);

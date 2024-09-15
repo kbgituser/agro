@@ -3,6 +3,7 @@ using Agro.Model.Entities;
 using Agro.Model.Interfaces;
 using Agro.Model.UnitOfWork;
 using Logic.Interfaces;
+using Logic.MapperConfiguration;
 using Logic.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddAutoMapper(typeof(Logic.MapperConfiguration.CityProfile));
-//builder.Services.AddAutoMapper(typeof(Logic.MapperConfiguration.CityProfile));
+
+builder.Services.AddAutoMapper(typeof(CityProfile));
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

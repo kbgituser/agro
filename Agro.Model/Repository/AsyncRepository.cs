@@ -56,7 +56,7 @@ namespace Agro.Model.Repository
 		}
 
 
-		public async Task<PaginatedList<T>> GetAllPagedAsync(int? page, int pageSize = 10)
+		public async Task<PaginatedList<T>> GetAllPagedAsync(int? page, int pageSize)
 		{
 			var t = _dbContext.Set<T>();
 			pageSize = ((pageSize==0) ? 10: pageSize);

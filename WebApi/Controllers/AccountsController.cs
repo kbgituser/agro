@@ -62,7 +62,6 @@ namespace WebApi.Controllers
             };
 
             var creationResult = await _userManager.CreateAsync(applicationUser, userForRegistration.Password);
-
             
             if (creationResult.Succeeded)
             {

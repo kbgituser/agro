@@ -46,7 +46,7 @@ else
 
 @code {
     private CityDto[]? cities;
-
+    
     protected override async Task OnInitializedAsync()
     {
         cities = await Http.GetFromJsonAsync<CityDto[]>("http://localhost:7272/api/Cities");

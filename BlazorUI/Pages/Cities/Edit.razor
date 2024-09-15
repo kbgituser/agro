@@ -37,7 +37,7 @@ CityId parameter is @cityId!
     private CityDto City = new();
     string statusCode = "";
     string content = "";
-
+    string rootUrl = "http://localhost:7272/api/Cities/";
     protected override async Task OnParametersSetAsync()
     {
         City = new CityDto();
@@ -46,7 +46,7 @@ CityId parameter is @cityId!
 
         if (cityId != 0)
         {
-            var t = await Http.GetAsync("https://localhost:7272/api/Cities/" + cityId);
+            var t = await Http.GetAsync(rootUrl + cityId);
 
             if (t.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -63,12 +63,12 @@ CityId parameter is @cityId!
     {
         if (City.Id!= 0)
         {
-            await Http.PutAsJsonAsync("api/Cities", City);
+            var test = await Http.PutAsJsonAsync($"{rootUrl}", City);
         }
         else
         {
-            await Http.PostAsJsonAsync("api/Cities", City);
+            await Http.PostAsJsonAsync(rootUrl, City);
         }
-        NavigationManager.NavigateTo("/Cities");
+        NavigationManager.NavigateTo("http://localhost:5233/cities");
     }
 }

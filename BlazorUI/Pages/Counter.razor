@@ -8,11 +8,21 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<input type="date" @bind-value="MyDate" />
+
 @code {
     private int currentCount = 0;
+    private DateTime MyDate = DateTime.Now;
 
     private void IncrementCount()
     {
         currentCount++;
+        var t = MyDate;
     }
+    private void DateProcess()
+    {
+        var t = MyDate;
+        
+    }
+
 }

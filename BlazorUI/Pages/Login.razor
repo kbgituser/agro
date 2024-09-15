@@ -1,0 +1,64 @@
+﻿@using Agro.Model.WebApi.Models
+@using BlazorUI.Token
+@using ExternalWebServices;
+@page "/login"
+@inject HttpClient Http
+@using LoginDto = Agro.Model.Dto.User.Login
+@inject NavigationManager NavigationManager
+@inject TokenGetter TokenGetter
+@* //@inject IConfiguration Configuration *@
+
+
+<PageTitle>Login</PageTitle>
+
+<h1>Login</h1>
+
+
+    <div>
+        <EditForm Model="@model">
+            <p>
+                username
+                <InputText class="form-control" @bind-Value="model.Name" />
+            </p>         
+            <p>
+            password
+                        @* <InputText class="form-control" @bind-Value="model.Password" typeof="password"/> *@
+            <input @bind-value="model.Password"  type="password"/>
+
+
+            </p>
+        <button @onclick="Submit">Войти</button>
+
+        </EditForm>
+    </div>
+
+
+@code {
+
+    public LoginDto model = new LoginDto() { 
+        Name = "test" , Password="pass"
+    };
+
+    // private bool success, errors;
+    // private string email = string.Empty;
+    // private string password = string.Empty;
+    // private string[] errorList = [];
+    private string rootUrl = "http://localhost:7272/api/auth/login";
+
+    protected override async Task OnInitializedAsync()
+    {
+        model.Password = "sfa";
+    }
+    protected async Task Submit()
+    {
+        var res = await Http.PostAsJsonAsync(rootUrl, model);
+        res.EnsureSuccessStatusCode();
+        var result = await res.Content.ReadFromJsonAsync<AuthenticatedResponse>();
+
+        // var res = await TokenGetter.GetTokenAsync(model);
+        // if (res != null)
+        //     NavigationManager.NavigateTo("http://localhost:7272/cities");
+        
+    }
+    
+}

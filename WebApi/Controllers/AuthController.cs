@@ -1,4 +1,5 @@
 ﻿using Agro.Model.Data;
+using Agro.Model.Dto.User;
 using Agro.Model.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Services;
@@ -17,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost, Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
+        public async Task<IActionResult> Login([FromBody] Login loginModel)
         {
             try
             {

@@ -8,6 +8,7 @@ using Agro.Model.PaginatedList;
 using Agro.Model.UnitOfWork;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Logic.Services
 {
@@ -35,8 +36,14 @@ namespace Logic.Services
 
         public async Task<PaginatedList<CityDto>> GetAllPagedAsync(int? p)
         {
-            return _mapper.Map<PaginatedList<CityDto>>
-                (await _unitOfWork.CityRepository.GetAllPagedAsync(p));
+            var t = await _unitOfWork.CityRepository.GetAllPagedAsync(p);
+            //var citydtopl = t.Select(x => _mapper.Map<CityDto>(x));
+            //citydtopl
+            //PaginatedList<CityDto> cityDtos = t.Select(x=>_mapper.Map<CityDto>(x));
+            var t2 = _mapper.Map<PaginatedList<CityDto>>(t);
+            return t2;
+            //return _mapper.Map<PaginatedList<CityDto>>
+            //    (await _unitOfWork.CityRepository.GetAllPagedAsync(p));
         }
 
         public async Task Create(CityDto cityDto)
