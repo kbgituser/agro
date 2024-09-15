@@ -329,3 +329,7 @@
 [Oo]bj/
 /WebApi/bin/Debug/net8.0/appsettings.json
 /WebApi/bin/Debug/net8.0/WebApi.deps.json
+/WebApi/obj/Debug/net8.0/ApiEndpoints.json
+/WebApi/obj/Debug/net8.0/WebApi.csproj.CoreCompileInputs.cache
+/WebApi/obj/Debug/net8.0/WebApi.sourcelink.json
+/MVC/obj/Debug/net8.0/MVC.GeneratedMSBuildEditorConfig.editorconfig
