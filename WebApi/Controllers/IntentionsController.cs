@@ -33,7 +33,8 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet, Authorize]
+        //[HttpGet, Authorize]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IntentionDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

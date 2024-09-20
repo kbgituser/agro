@@ -1,19 +1,20 @@
 ﻿@using Agro.Model.Dto.City
-<h3>Cities</h3>
-<PageTitle>Cities</PageTitle>
+<PageTitle>Города</PageTitle>
 @page "/cities"
 @inject HttpClient Http
 
-<h1>Cities</h1>
+<h1>Города</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
 
 @if (cities == null)
 {
-    <p><em>Loading...3245</em></p>
+    <p><em>Загрузка</em></p>
 }
 else
 {
+    <a href='/cities/add' class="btn btn-outline-dark" role="button">
+        Добавить
+    </a>
     <table class="table">
         <thead>
             <tr>

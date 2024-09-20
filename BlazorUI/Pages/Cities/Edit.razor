@@ -3,10 +3,16 @@
 @page "/cities/add"
 
 @using Agro.Model.Dto.City
+@using Agro.Model.WebApi.Models
+@using BlazorUI.HttpRequest
+@using BlazorUI.Token
+@using System.Net.Http.Headers
 
-
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject HttpRequestMessageFactory HttpRequestMessageFactory
+
 
 
 <h3>EditCity</h3>
@@ -41,8 +47,6 @@ CityId parameter is @cityId!
     protected override async Task OnParametersSetAsync()
     {
         City = new CityDto();
-        City.Code = "432432";
-        City.Name = "432432";
 
         if (cityId != 0)
         {
@@ -61,14 +65,17 @@ CityId parameter is @cityId!
 
     protected async Task Submit()
     {
-        if (City.Id!= 0)
+        var method = (City.Id != 0) ? HttpMethod.Put : HttpMethod.Post;
+        try
         {
-            var test = await Http.PutAsJsonAsync($"{rootUrl}", City);
+            var tokenInfo = await localStorage.GetItemAsync<AuthenticatedResponse>("authToken");
+            var request = await HttpRequestMessageFactory.CreateAsync(method, true, rootUrl, City);
+            var t = await Http.SendAsync(request);
+            NavigationManager.NavigateTo("http://localhost:5233/cities");
         }
-        else
+        catch
         {
-            await Http.PostAsJsonAsync(rootUrl, City);
+            NavigationManager.NavigateTo("http://localhost:5233/login");
         }
-        NavigationManager.NavigateTo("http://localhost:5233/cities");
     }
 }

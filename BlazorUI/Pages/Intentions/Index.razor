@@ -1,0 +1,83 @@
+﻿@using Agro.Model.Dto.City
+@using Agro.Model.Dto.Intention
+@using Agro.Model.Enums
+@using EnumsNET
+<PageTitle>Заявки</PageTitle>
+@page "/intentions"
+@inject HttpClient Http
+
+<h1>Заявки</h1>
+
+
+@if (intentions == null)
+{
+    <p><em>Загрузка</em></p>
+}
+else
+{
+    <a href='/intention/add' class="btn btn-outline-dark" role="button">
+        Добавить
+    </a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>AnimalPart</th>
+                <th>Message</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var intention in intentions)
+            {
+                <tr>
+                    <td>@intention.Name</td>
+                    <td>@intention.City.Name </td>
+                    <td>  @((AnimalPart)intention.AnimalPart).AsString() @intention.AnimalPart</td>
+                    <td>@intention.Message</td>
+
+                    <td>
+                        <a href='/intentions/edit/@intention.Id' class="btn btn-outline-dark" role="button">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a href='/intentions/delete/@intention.Id' class="btn btn-outline-dark" role="button">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IntentionDto[]? intentions;
+    private string url = "http://localhost:7272/api/Intentions";
+    protected override async Task OnInitializedAsync()
+    {
+
+        intentions = await Http.GetFromJsonAsync<IntentionDto[]>(url);
+        string t = "";
+    }
+
+    // private string GetDescription(AnimalPart animalPart)
+    // {
+    //     var t = ((AnimalPart)animalPart).AsString();
+    // }
+
+    // protected async Task<string> GetCityName(int? cityId)
+    // {
+    //     if (cityId is not null)
+    //     {
+    //         var city = await Http.GetFromJsonAsync<CityDto>("http://localhost:7272/api/cities/" + cityId);
+    //         var name = city.Name;
+    //         return name;
+    //     }
+    //     return "";
+    // }
+}

@@ -7,6 +7,8 @@ namespace BlazorUI.Token
     {
         static AuthenticatedResponse TokenInfo { get; set; }
 
-        Task<AuthenticatedResponse> GetTokenAsync(Login login);
+        Task<AuthenticatedResponse> GetTokenInfoAsync(Login login);
+        Task<string> GetTokenAsync();
+
     }
 }

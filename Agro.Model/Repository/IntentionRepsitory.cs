@@ -19,7 +19,7 @@ namespace Agro.Model.Repository
 
         public IQueryable<Intention> GetAll()
         {
-            return _dbContext.Intentions.Include(r => r.User);
+            return _dbContext.Intentions.Include(r => r.User).Include(r => r.City);
         }
 
         public async Task<PaginatedList<Intention>> GetAllRequestsPagedAsync(int? p)

@@ -1,11 +1,10 @@
 ﻿@page "/cities/delete/{cityId:int}"
-
 @using Agro.Model.Dto.City
-
-
+@using BlazorUI.HttpRequest
+@using BlazorUI.Token
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
-
+@inject HttpRequestMessageFactory HttpRequestMessageFactory
 
 <h3>Delete</h3>
 CityId parameter is @cityId!
@@ -24,8 +23,6 @@ CityId parameter is @cityId!
         <p>
             <button @onclick="Submit">Удалить</button>
         </p>
-        код @statusCode
-        content @content
 
     </div>
 </EditForm>
@@ -35,22 +32,19 @@ CityId parameter is @cityId!
     [Parameter]
     public int cityId { get; set; }
     private CityDto City = new();
-    string statusCode = "";
-    string content = "";
+    string rootUrl = "http://localhost:7272/api/Cities/";
 
     protected override async Task OnParametersSetAsync()
     {
         City = new CityDto();
-        City.Code = "432432";
-        City.Name = "432432";
 
         if (cityId != 0)
         {
-            var t = await Http.GetAsync("http://localhost:7272/api/Cities/" + cityId);
+            var result = await Http.GetAsync(rootUrl + cityId);
 
-            if (t.StatusCode == System.Net.HttpStatusCode.OK)
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                City = (await t.Content.ReadFromJsonAsync<CityDto>())!;
+                City = (await result.Content.ReadFromJsonAsync<CityDto>())!;
             }
         }
     }
@@ -59,10 +53,15 @@ CityId parameter is @cityId!
     {
         if (City.Id!= 0)
         {
-            var t = await Http.DeleteAsync("http://localhost:7272/api/Cities" + City.Id);
-            
+            var request = await HttpRequestMessageFactory.CreateAsync(HttpMethod.Delete, true, rootUrl+City.Id);
+
+            var result = await Http.SendAsync(request);
+
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                NavigationManager.NavigateTo("/Cities");
+            }
         }
-        
         NavigationManager.NavigateTo("/Cities");
     }
 }

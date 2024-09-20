@@ -27,9 +27,8 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return Unauthorized(ex.Message);
             }
-            //var result = _tokenService.Login(loginModel).Result;
         }
     }
 }

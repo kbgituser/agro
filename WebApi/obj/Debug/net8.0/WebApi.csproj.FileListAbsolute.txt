@@ -79,3 +79,4 @@ C:\kanat\Projects\Agro\WebApi\obj\Debug\net8.0\refint\WebApi.dll
 C:\kanat\Projects\Agro\WebApi\obj\Debug\net8.0\WebApi.pdb
 C:\kanat\Projects\Agro\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 C:\kanat\Projects\Agro\WebApi\obj\Debug\net8.0\ref\WebApi.dll
+C:\kanat\Projects\Agro\WebApi\bin\Debug\net8.0\Blazored.LocalStorage.dll

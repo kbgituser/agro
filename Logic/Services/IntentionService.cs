@@ -31,8 +31,16 @@ namespace Logic.Services
 
         public async Task<List<IntentionDto>> GetAllAsync()
         {
-            return _mapper.Map<List<IntentionDto>>
-                (await _unitOfWork.IntentionRepository.GetAllAsync());
+            //return _mapper.Map<List<IntentionDto>>
+            //    (await _unitOfWork.IntentionRepository.GetAllAsync());
+
+            //return _mapper.Map<List<IntentionDto>>
+            //    (_unitOfWork.IntentionRepository.GetAll());
+
+            var t = _unitOfWork.IntentionRepository.GetAll();
+            var t2 = _mapper.Map<List<IntentionDto>>(t);
+            return t2;
+            
         }
 
         public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize=10)

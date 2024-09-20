@@ -14,7 +14,8 @@ namespace Agro.Model.Dto.Intention
         
         [Display(Name = "Город")]
         public int? CityId { get; set; }
-               
+
+        public Entities.City City { get; set; }
 
         [Display(Name = "Описание")]
         [DataType(DataType.MultilineText)]
