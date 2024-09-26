@@ -1,0 +1,85 @@
+﻿@model Agro.Model.Entities.Intention
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "Layout.chtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Intention</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Request)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Request.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IntentionStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IntentionStatus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnimalPart)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnimalPart)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

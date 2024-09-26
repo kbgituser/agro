@@ -24,6 +24,8 @@ namespace Agro.Model.Dto.Intention
 
         [Display(Name = "Статус")]
         public IntentionStatus IntentionStatus { get; set; }
+        [Display(Name = "Часть скота")]
+
         public AnimalPart AnimalPart { get; set; }
     } 
 }

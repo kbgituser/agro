@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Agro.Model.Dto.City;
 
 namespace Logic.Services
 {
@@ -43,14 +44,17 @@ namespace Logic.Services
             
         }
 
-        public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize=10)
+        public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p=1, int? pageSize=10)
         {
             var result = await _unitOfWork.IntentionRepository.GetAllRequestsPagedAsync(p);
-            List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
-            return await PaginatedList<IntentionDto>.CreateAsync(
-                rDtoList.AsQueryable(), 
-                p.Value, 
-                pageSize.Value);
+            //List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
+            //return await PaginatedList<IntentionDto>.CreateAsync(
+            //    rDtoList.AsQueryable(), 
+            //    p.Value, 
+            //    pageSize.Value);
+
+            var t2 = _mapper.Map<PaginatedList<IntentionDto>>(result);
+            return t2;
         }
 
         public async Task<PaginatedList<Intention>> GetRequestsByStatusPagedAsync(IntentionStatus status, int? p)
@@ -58,9 +62,14 @@ namespace Logic.Services
             return await _unitOfWork.IntentionRepository.GetIntentionsByStatusPagedAsync(status, p);
         }
 
-        public async Task<Intention> GetRequestByIdAsync(int id)
+        public async Task<IntentionDto> GetIntentionByIdAsync(int id)
         {
-            return await _unitOfWork.IntentionRepository.GetIntentionById(id);
+            var intention = await _unitOfWork.IntentionRepository.GetIntentionById(id);
+
+            return _mapper.Map<IntentionDto>(
+                intention
+                );
+            //return await _unitOfWork.IntentionRepository.GetIntentionById(id);
         }
 
         public async Task<bool> IsUsersRequest(int requestId, string usersId)

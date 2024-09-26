@@ -13,7 +13,7 @@ namespace Logic.Interfaces
         Task DeleteById(int id);
         Task<List<IntentionDto>> GetAllAsync();
         Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p, int? pageSize = 10);
-        Task<Intention> GetRequestByIdAsync(int id);
+        Task<IntentionDto> GetIntentionByIdAsync(int id);
         Task<PaginatedList<Intention>> GetRequestsByStatusPagedAsync(IntentionStatus status, int? p);
         Task<bool> IsUsersRequest(int requestId, string usersId);
         Task Update(IntentionDto requestDto);

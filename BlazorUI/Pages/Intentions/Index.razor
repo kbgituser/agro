@@ -25,8 +25,6 @@ else
                 <th>City</th>
                 <th>AnimalPart</th>
                 <th>Message</th>
-
-
             </tr>
         </thead>
         <tbody>
@@ -35,7 +33,7 @@ else
                 <tr>
                     <td>@intention.Name</td>
                     <td>@intention.City.Name </td>
-                    <td>  @((AnimalPart)intention.AnimalPart).AsString() @intention.AnimalPart</td>
+                    <td>@GetDescription(intention.AnimalPart)</td>
                     <td>@intention.Message</td>
 
                     <td>
@@ -65,10 +63,11 @@ else
         string t = "";
     }
 
-    // private string GetDescription(AnimalPart animalPart)
-    // {
-    //     var t = ((AnimalPart)animalPart).AsString();
-    // }
+    private string GetDescription(AnimalPart animalPart)
+    {
+        var t = ((AnimalPart)animalPart).AsString(EnumFormat.Description);
+        return t;
+    }
 
     // protected async Task<string> GetCityName(int? cityId)
     // {

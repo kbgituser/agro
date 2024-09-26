@@ -62,7 +62,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(await _intentionService.GetRequestByIdAsync(id));
+                return Ok(await _intentionService.GetIntentionByIdAsync(id));
             }
             catch (Exception ex)
             {
