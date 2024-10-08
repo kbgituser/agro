@@ -34,7 +34,7 @@
             
             <div class="form-group">
                 <label asp-for="AnimalPart" class="control-label"></label>
-                <select asp-for="AnimalPart" class="form-control"></select>
+                <select asp-for="AnimalPart" class="form-control" asp-items="ViewBag.AnimalPart"></select>
                 <span asp-validation-for="AnimalPart" class="text-danger"></span>
             </div>
 

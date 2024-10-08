@@ -2,7 +2,7 @@
 using Agro.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Packaging.Rules;
+using System.Data;
 
 namespace MVC.Controllers;
 
@@ -28,11 +28,20 @@ public class AccountController : Controller
         {
             var user = new ApplicationUser()
             {
+                PhoneNumber = userRegistrationDto.PhoneNumber,
                 UserName = userRegistrationDto.PhoneNumber,
+                Name = userRegistrationDto.PhoneNumber,
                 Email = userRegistrationDto.Email,
+                NormalizedEmail = userRegistrationDto.Email,
+                EmailConfirmed = true
             };
+            var password = new PasswordHasher<ApplicationUser>();
+            var hashed = password.HashPassword(user, userRegistrationDto.Password);
+            user.PasswordHash = hashed;
+
             var result = await _userManager.CreateAsync(user);
-            
+            string[] roles = { "Buyer" };
+            await _userManager.AddToRolesAsync(user, roles);
             if (result.Succeeded)
             {
                 // Логика после успешной регистрации
@@ -46,5 +55,11 @@ public class AccountController : Controller
         }
         return View(userRegistrationDto);
     }
-    
+
+    [HttpGet]
+    public IActionResult Login()
+    {
+        return View();
+    }
+
 }

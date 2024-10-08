@@ -1,9 +1,13 @@
 ﻿using Agro.Model.Data;
+using Agro.Model.Dto.Intention;
 using Agro.Model.Entities;
+using Agro.Model.Enums;
 using Logic.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MVC.EnumExtension;
 
 namespace MVC.Controllers
 {
@@ -46,13 +50,23 @@ namespace MVC.Controllers
             return View(intention);
         }
 
-        // GET: Intentions/Create
+        [Authorize] 
         public IActionResult Create()
         {
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id");
-            ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            //var animalParts = from AnimalPart part in Enum.GetValues(typeof(AnimalPart))
+            //                 select new { Id = (int)part, Name = EnumExtensions.ToDescription(part) };
+            //ViewData["AnimalPart"] = new SelectList(animalParts, "Id", "Name", AnimalPart.Whole );
+            PrepareDataForCityAndAnimalPart();
             return View();
+        }
+
+        private void PrepareDataForCityAndAnimalPart()
+        {
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            var animalParts = from AnimalPart part in Enum.GetValues(typeof(AnimalPart))
+                              select new { Id = (int)part, Name = EnumExtensions.ToDescription(part) };
+            ViewData["AnimalPart"] = new SelectList(animalParts, "Id", "Name", AnimalPart.Whole);
         }
 
         // POST: Intentions/Create
@@ -60,18 +74,22 @@ namespace MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,UserId,CityId,RequestId,Message,IntentionStatus,AnimalPart,IsActive,Code,Id,EntryDate,IsDeleted")] Intention intention)
+        [Authorize]
+        //public async Task<IActionResult> Create([Bind("Name,UserId,CityId,RequestId,Message,IntentionStatus,AnimalPart,IsActive,Code,Id,EntryDate,IsDeleted")] Intention intention)
+        public async Task<IActionResult> Create([Bind("Name,CityId,Message,IntentionStatus,AnimalPart")] IntentionDto intentionDto)
+
         {
             if (ModelState.IsValid)
             {
-                _context.Add(intention);
-                await _context.SaveChangesAsync();
+                //_context.Add(intention);
+                //await _context.SaveChangesAsync();
+                await _intentionService.CreateAsync(intentionDto);
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id", intention.CityId);
-            ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Id", intention.RequestId);
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", intention.UserId);
-            return View(intention);
+            PrepareDataForCityAndAnimalPart();
+
+            return View(intentionDto);
         }
 
         // GET: Intentions/Edit/5
@@ -89,7 +107,7 @@ namespace MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", intention.CityId);
+            PrepareDataForCityAndAnimalPart();
             return View(intention);
         }
 

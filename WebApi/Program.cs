@@ -1,26 +1,21 @@
+using Agro.Model.Data;
+using Agro.Model.Entities;
+using Agro.Model.Interfaces;
+using Agro.Model.UnitOfWork;
+using Logic.Interfaces;
+using Logic.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Agro.Model.Data;
+using Microsoft.OpenApi.Models;
 using System.Text;
 using WebApi.JwtFeatures;
 using WebApi.Services;
-using AutoMapper;
-using Agro.Model.Interfaces;
-using Agro.Model.UnitOfWork;
-using Microsoft.AspNetCore.Identity;
-using Agro.Model.Entities;
-using Logic.Services;
-using Microsoft.OpenApi.Models;
-using Logic.Interfaces;
-using Logic.MapperConfiguration;
-using Microsoft.Extensions.DependencyInjection;
-using Agro.Model.DataSeed;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddAuthentication(
     JwtBearerDefaults.AuthenticationScheme
     //opt =>
@@ -62,6 +57,8 @@ builder.Services.AddAuthorization(option =>
         ).RequireAuthenticatedUser().
         Build();
 });
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 //builder.Services.AddControllers();
