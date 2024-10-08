@@ -335,3 +335,9 @@
 /MVC/obj/Debug/net8.0/MVC.GeneratedMSBuildEditorConfig.editorconfig
 /MVC/bin/Debug/net8.0/MVC.staticwebassets.runtime.json
 /MVC/obj/MVC.csproj.nuget.g.targets
+MVC/[Bb]in/
+MVC/[Oo]bj/
+WebApi/[Bb]in/
+WebApi/[Oo]bj/
+
+
