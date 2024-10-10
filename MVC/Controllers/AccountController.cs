@@ -2,7 +2,6 @@
 using Agro.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace MVC.Controllers;
 

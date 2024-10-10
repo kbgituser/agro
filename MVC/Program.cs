@@ -1,11 +1,13 @@
-using Agro.Model.Data;
+﻿using Agro.Model.Data;
 using Agro.Model.Entities;
 using Agro.Model.Interfaces;
 using Agro.Model.UnitOfWork;
 using Logic.Interfaces;
 using Logic.MapperConfiguration;
 using Logic.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +38,17 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Путь, по которому пользователь будет перенаправлен, если доступ к ресурсу требует аутентификации
+    options.LoginPath = "/Identity/Account/Login";
+
+    // Путь, по которому User будет перенаправлен после выхода из системы
+    options.LogoutPath = "/Identity/Account/Logout";
+
+    // Путь, по которому будет перенаправлен пользователь, если у него нет доступа
+    //options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+});
 
 builder.Services.AddControllersWithViews();
 
@@ -60,6 +73,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Важно: этот вызов должен быть перед UseAuthorization
 app.UseAuthorization();
 
 app.MapControllerRoute(

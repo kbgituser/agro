@@ -55,6 +55,7 @@ namespace Agro.Model.Repository
             foreach (var wholeIntention in wholeIntentions)
             {
                 var request = new Request();
+                MakeIntentionSelected(wholeIntention);
                 request.Intentions.Add(wholeIntention);
                 requests.Add(request);
             }
@@ -66,8 +67,13 @@ namespace Agro.Model.Repository
             for (int i = 0; i < halfsGroupCount; i += elementsInPart)
             {
                 var request = new Request();
+                
+                MakeIntentionSelected(halfIntentions.ElementAt(i));
                 request.Intentions.Add(halfIntentions.ElementAt(i));
+                
+                MakeIntentionSelected(halfIntentions.ElementAt(i + 1));
                 request.Intentions.Add(halfIntentions.ElementAt(i + 1));
+                
                 requests.Add(request);
             }
 
@@ -77,6 +83,10 @@ namespace Agro.Model.Repository
             for (int i = 0; i < thirdGroupCount; i += elementsInPart)
             {
                 var request = new Request();
+                MakeIntentionSelected(thirdIntentions.ElementAt(i));
+                MakeIntentionSelected(thirdIntentions.ElementAt(i+1));
+                MakeIntentionSelected(thirdIntentions.ElementAt(i+2));
+
                 request.Intentions.Add(thirdIntentions.ElementAt(i));
                 request.Intentions.Add(thirdIntentions.ElementAt(i + 1));
                 request.Intentions.Add(thirdIntentions.ElementAt(i + 2));
@@ -89,6 +99,11 @@ namespace Agro.Model.Repository
             for (int i = 0; i < forthGroupCount; i += elementsInPart)
             {
                 var request = new Request();
+                MakeIntentionSelected(forthIntentions.ElementAt(i));
+                MakeIntentionSelected(forthIntentions.ElementAt(i+1));
+                MakeIntentionSelected(forthIntentions.ElementAt(i+2));
+                MakeIntentionSelected(forthIntentions.ElementAt(i+3));
+
                 request.Intentions.Add(forthIntentions.ElementAt(i));
                 request.Intentions.Add(forthIntentions.ElementAt(i + 1));
                 request.Intentions.Add(forthIntentions.ElementAt(i + 2));
@@ -120,6 +135,10 @@ namespace Agro.Model.Repository
             request.UserId = "";
             request.Status= RequestStatus.Active;
             return true;
+        }
+        private void MakeIntentionSelected(Intention intention)
+        {
+            intention.ChangeStatusToSelected();
         }
     }
 }

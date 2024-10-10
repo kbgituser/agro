@@ -78,16 +78,17 @@ namespace Logic.Services
             return request.UserId == usersId;
         }
 
-        public async Task CreateAsync(IntentionDto request)
+        public async Task CreateAsync(IntentionDto intention)
         {
-            var creatingIntention = _mapper.Map<Intention>(request);
+            var creatingIntention = _mapper.Map<Intention>(intention);
             string userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             creatingIntention.UserId = userId;
+            creatingIntention.IntentionStatus = IntentionStatus.Active;
+
             _unitOfWork.IntentionRepository.Add(creatingIntention);
             await _unitOfWork.Commit();
             _unitOfWork.RequestRepository.GroupIntentionsToRequest();
-            //await 
-            _unitOfWork.Commit();
+            await _unitOfWork.Commit();
         }
         public async Task Update(IntentionDto requestDto)
         {
