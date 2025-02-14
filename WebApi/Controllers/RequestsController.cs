@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllByPageAsync(int? id = 1)
         {
-            return Ok(await _requestService.GetAllPagedAsync(1));
+            return Ok(await _requestService.GetAllRequestDtoPagedAsync(1));
         }
 
         [HttpGet("{id:int}"), Authorize]

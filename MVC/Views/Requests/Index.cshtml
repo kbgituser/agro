@@ -1,0 +1,50 @@
+﻿@* @model IEnumerable<Agro.Model.Dto.Request.RequestDto> *@
+@using Agro.Model.PaginatedList
+@model PaginatedList<Agro.Model.Dto.Request.RequestDto> 
+
+
+@{
+    ViewData["Title"] = "Заявки для поставщиков";
+    
+}
+
+<h1>Заявки для поставщиков мяса</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().City.Name)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.First().Status)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

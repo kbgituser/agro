@@ -1,4 +1,5 @@
-﻿using Agro.Model.Data;
+﻿using Agro.Logic.Interfaces;
+using Agro.Model.Data;
 using Agro.Model.Entities;
 using Agro.Model.Interfaces;
 using Agro.Model.UnitOfWork;
@@ -31,6 +32,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IIntentionService, IntentionService>();
+builder.Services.AddScoped<IRequestService, RequestService>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
@@ -50,7 +53,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     //options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddRazorPages();
 

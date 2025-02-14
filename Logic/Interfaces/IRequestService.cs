@@ -11,7 +11,7 @@ namespace Agro.Logic.Interfaces
         Task CreateAsync(RequestDto request);
         Task DeleteById(int id);
         Task<List<RequestDto>> GetAllAsync();
-        Task<PaginatedList<RequestDto>> GetAllPagedAsync(int? p, int? pageSize = 10);
+        Task<PaginatedList<RequestDto>> GetAllRequestDtoPagedAsync(int? p, int? pageSize = 10);
         Task<RequestDto> GetRequestByIdAsync(int id);
         Task<PaginatedList<RequestDto>> GetRequestsByStatusPagedAsync(RequestStatus status, int? p);
         Task<bool> IsUsersRequest(int requestId, string usersId);

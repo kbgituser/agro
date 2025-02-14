@@ -18,10 +18,10 @@ namespace Agro.Model.Entities
         public string UserId { get; set; }
         [Display(Name = "Исполнитель")]
         public virtual ApplicationUser User { get; set; }
-        [Display(Name = "Город")]
-        public int? CityId { get; set; }
-        [Display(Name = "Город")]
-        public virtual City City { get; set; }
+        //[Display(Name = "Город")]
+        //public int? CityId { get; set; }
+        //[Display(Name = "Город")]
+        //public virtual City City { get; set; }
         //public RequestStatus RequestStatus { get; set; }
 
     }

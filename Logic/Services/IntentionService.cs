@@ -1,33 +1,33 @@
-﻿using AutoMapper;
-using Logic.Interfaces;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Agro.Model.Dto.Intention;
+﻿using Agro.Model.Dto.Intention;
 using Agro.Model.Entities;
 using Agro.Model.Enums;
 using Agro.Model.Interfaces;
 using Agro.Model.PaginatedList;
+using AutoMapper;
+using Logic.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Agro.Model.Dto.City;
 
 namespace Logic.Services
 {
     public class IntentionService : IIntentionService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserService _userService;
         private readonly ILogger<IntentionService> _logger;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public IntentionService(IUnitOfWork unitOfWork, ILogger<IntentionService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public IntentionService(IUnitOfWork unitOfWork, ILogger<IntentionService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _userService = userService;
         }
 
         public async Task<List<IntentionDto>> GetAllAsync()
@@ -46,7 +46,7 @@ namespace Logic.Services
 
         public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p=1, int? pageSize=10)
         {
-            var result = await _unitOfWork.IntentionRepository.GetAllRequestsPagedAsync(p);
+            var result = await _unitOfWork.IntentionRepository.GetAllIntentionsPagedAsync(p);
             //List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
             //return await PaginatedList<IntentionDto>.CreateAsync(
             //    rDtoList.AsQueryable(), 
@@ -55,6 +55,17 @@ namespace Logic.Services
 
             var t2 = _mapper.Map<PaginatedList<IntentionDto>>(result);
             return t2;
+        }
+
+        public async Task<PaginatedList<Intention>> GetAllowedIntentionsByUserIdAsync(string userId, int? p)
+        {
+            var isAdmin = await _userService.IsUserAdmin(userId);
+            if (isAdmin)
+            {
+                return await _unitOfWork.IntentionRepository.GetAllPagedAsync(p);
+            }
+
+            return await _unitOfWork.IntentionRepository.GetIntentionByUserId(userId, p);
         }
 
         public async Task<PaginatedList<Intention>> GetRequestsByStatusPagedAsync(IntentionStatus status, int? p)

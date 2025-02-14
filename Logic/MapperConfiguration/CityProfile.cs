@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Agro.Model.Dto.Request;
 
 namespace Logic.MapperConfiguration
 {
@@ -31,7 +32,11 @@ namespace Logic.MapperConfiguration
             //.ReverseMap()
             ;
             CreateMap<IntentionDto, Intention>().ReverseMap();
-
+            CreateMap<Request, RequestDto>().
+                ForMember(dest=>dest.CityId, opt=>opt.MapFrom(src=>src.Intentions.FirstOrDefault().CityId)).
+                ForMember(dest=>dest.City, opt=>opt.MapFrom(src=>src.Intentions.FirstOrDefault().City)).
+                ReverseMap()
+                ;
 
         }
     }

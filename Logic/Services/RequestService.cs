@@ -35,10 +35,11 @@ namespace Logic.Services
                 (await _unitOfWork.RequestRepository.GetAllAsync());
         }
 
-        public async Task<PaginatedList<RequestDto>> GetAllPagedAsync(int? p, int? pageSize = 10)
+        public async Task<PaginatedList<RequestDto>> GetAllRequestDtoPagedAsync(int? p, int? pageSize = 10)
         {
             var result = await _unitOfWork.RequestRepository.GetAllRequestsPagedAsync(p);
-            List<RequestDto> rDtoList = _mapper.Map<List<RequestDto>>(result.ToList());
+
+            List<RequestDto> rDtoList = _mapper.Map<List<RequestDto>>(result);
             return await PaginatedList<RequestDto>.CreateAsync(
                 rDtoList.AsQueryable(),
                 p.Value,
@@ -53,7 +54,10 @@ namespace Logic.Services
 
         public async Task<RequestDto> GetRequestByIdAsync(int id)
         {
-            return _mapper.Map<RequestDto>(await _unitOfWork.RequestRepository.GetRequestById(id));
+            var request = await _unitOfWork.RequestRepository.GetRequestById(id);
+            return _mapper.Map<RequestDto>(request);
+
+            //return _mapper.Map<RequestDto>(await _unitOfWork.RequestRepository.GetRequestById(id));
         }
 
         public bool Release(int id)
@@ -83,7 +87,7 @@ namespace Logic.Services
             //var request = _mapper.Map<Request>(requestDto);
             var req = (await _unitOfWork.RequestRepository.GetRequestById(requestDto.Id));
             req.Name = requestDto.Name;
-            req.CityId = requestDto.CityId;
+            //req.CityId = requestDto.CityId;
             req.Status = requestDto.Status;
             //var intentions = _unitOfWork.IntentionRepository.GetAll()
             //    .Where(i => req.Intentions

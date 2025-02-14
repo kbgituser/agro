@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Agro.Model.Entities
+﻿namespace Agro.Model.Entities
 {
     public class Attachment: BaseEntity
     {

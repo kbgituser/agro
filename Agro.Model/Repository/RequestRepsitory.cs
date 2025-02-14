@@ -24,7 +24,14 @@ namespace Agro.Model.Repository
 
         public async Task<PaginatedList<Request>> GetAllRequestsPagedAsync(int? p)
         {
-            var t = _dbContext.Requests.Include(r => r.User).Include(x => x.City);
+            var t = _dbContext.Requests.
+                Where(x => x.Intentions.Any()).
+                Include(r => r.User)
+                //.Include(x => x.City)
+                .Include(x=>x.Intentions)
+                .ThenInclude(x=>x.City)
+                ;
+
             int pageSize = 10;
             int pN = (p ?? 1);
             return await PaginatedList<Request>.CreateAsync(t.OrderByDescending(x => x.EntryDate).AsNoTracking(), pN, pageSize);
@@ -32,16 +39,20 @@ namespace Agro.Model.Repository
 
         public async Task<Request> GetRequestById(int id)
         {
-            return  await _dbContext.Requests.AsNoTracking()
+            return await _dbContext.Requests.AsNoTracking()
                 .Include(r => r.User)
-                .Include(r => r.City)
-                .Include(r=>r.Intentions)
-                .FirstOrDefaultAsync(x=>x.Id == id);
+                //.Include(r => r.City)
+                .Include(r => r.Intentions)
+                .ThenInclude(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == id)
+                ;
         }
 
         public async Task<PaginatedList<Request>> GetRequestsByStatusPagedAsync(RequestStatus status, int? p)
         {
-            var t = _dbContext.Requests.Where(x => x.Status == status).Include(r => r.User).Include(x => x.City);
+            var t = _dbContext.Requests.Where(x => x.Status == status).Include(r => r.User)
+                //.Include(x => x.City)
+                ;
             int pageSize = 10;
             int pN = (p ?? 1);
             return await PaginatedList<Request>.CreateAsync(t.OrderByDescending(x => x.EntryDate).AsNoTracking(), pN, pageSize);

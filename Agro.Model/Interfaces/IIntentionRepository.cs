@@ -9,8 +9,9 @@ namespace Agro.Model.Interfaces
     public interface IIntentionRepository: IAsyncRepository<Intention>
     {
         IQueryable<Intention> GetAll();
-        Task<PaginatedList<Intention>> GetAllRequestsPagedAsync(int? p);
+        Task<PaginatedList<Intention>> GetAllIntentionsPagedAsync(int? p);
         Task<Intention> GetIntentionById(int id);
+        Task<PaginatedList<Intention>> GetIntentionByUserId(string id, int? p);
         Task<PaginatedList<Intention>> GetIntentionsByStatusPagedAsync(IntentionStatus status, int? id);
     }
 }

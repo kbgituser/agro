@@ -1,6 +1,5 @@
-﻿using Agro.Model.Enums;
-using Agro.Model.Dto;
-using Agro.Model.Dto.Intention;
+﻿using Agro.Model.Dto.Intention;
+using Agro.Model.Enums;
 using System.Collections.Generic;
 
 namespace Agro.Model.Dto.Request
@@ -11,6 +10,7 @@ namespace Agro.Model.Dto.Request
         public RequestStatus Status { get; set; }
         public string UserId { get; set; }
         public int? CityId { get; set; }
+        public Entities.City City { get; set; }
         public RequestStatus RequestStatus { get; set; }
     }
 }

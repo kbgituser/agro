@@ -16,5 +16,7 @@ namespace Logic.Services
         Task<bool> IsUserAndPasswordCorrect(string email, string password);
         Task<bool> IsUserExist(string email);
         Task<bool> IsUserExistByPhone(string phoneNumber);
+        Task<bool> IsUserAdmin(string userId);
+
     }
 }
