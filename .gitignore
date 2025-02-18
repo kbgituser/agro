@@ -342,3 +342,5 @@ WebApi/[Oo]bj/
 
 
 /WebApi/obj/Debug/net8.0/WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/WebApi/[Bb]in/
+/WebApi/[Bb]in/
