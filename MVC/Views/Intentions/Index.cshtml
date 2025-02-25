@@ -1,17 +1,19 @@
 ﻿@using Agro.Model.Dto.Intention
 @using Agro.Model.PaginatedList
 @* //@model PaginatedList<IntentionDto> *@
-@model IEnumerable<Agro.Model.Dto.Intention.IntentionDto>
+@* @model IEnumerable<Agro.Model.Dto.Intention.IntentionDto> *@
+@model PaginatedList<IntentionDto>
 
-
+  
 @{
-    ViewData["Title"] = "Заявки";
+  ViewData["Title"] = "Заявки потребителей";
 }
 
-<h1>Заявки</h1>
+<h1 class="text-center">@ViewData["Title"]</h1><br />
 
 <div class="text-center">
-  <a asp-action="Create" class="btn btn-primary">Оставьте заявку на мясо</a>
+  <a asp-action="Create" class="btn btn-primary btn-lg btn-block">Оставьте заявку на согым</a>
+  
 </div>
 <br />
 
@@ -53,11 +55,28 @@
                     @Html.DisplayFor(modelItem => item.AnimalPart)
                 </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                @* <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> | *@
                 <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                @* <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> *@
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+      <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Первый</a>
+    </li>
+    <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+      <a class="page-link" href="@Url.Action("Index", new { page = (Model.PageIndex - 1)>0? Model.PageIndex - 1:1 })">Предыдущий</a>
+    </li>
+    <li class="page-item @(Model.PageIndex >= Model.TotalPages ? "disabled" : "")">
+      <a class="page-link" href="@Url.Action(nameof(Index), new { page = Model.PageIndex + 1 })">Следующий</a>
+    </li>
+    <li class="page-item @(Model.PageIndex >= Model.TotalPages ? "disabled" : "")">
+      <a class="page-link" href="@Url.Action(nameof(Index), new { page = Model.TotalPages })">Последний</a>
+    </li>
+  </ul>
+</nav>

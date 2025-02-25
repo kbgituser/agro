@@ -46,6 +46,9 @@ namespace Logic.Services
 
         public async Task<PaginatedList<IntentionDto>> GetAllPagedAsync(int? p=1, int? pageSize=10)
         {
+            if (p < 1) { 
+                p= 1;
+            }
             var result = await _unitOfWork.IntentionRepository.GetAllIntentionsPagedAsync(p);
             //List<IntentionDto> rDtoList = _mapper.Map<List<IntentionDto>>(result.ToList());
             //return await PaginatedList<IntentionDto>.CreateAsync(

@@ -1,20 +1,15 @@
-﻿using AutoMapper;
-using Agro.Model.Dto.Category;
+﻿using Agro.Model.Dto.Category;
 using Agro.Model.Dto.City;
 using Agro.Model.Dto.Intention;
+using Agro.Model.Dto.Request;
 using Agro.Model.Dto.User;
 using Agro.Model.Entities;
-using Agro.Model.PaginatedList;
-using System;
-using System.Collections.Generic;
+using AutoMapper;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Agro.Model.Dto.Request;
 
 namespace Logic.MapperConfiguration
 {
-    public class CityProfile : Profile
+  public class CityProfile : Profile
     {
         public CityProfile()
         {
@@ -33,8 +28,8 @@ namespace Logic.MapperConfiguration
             ;
             CreateMap<IntentionDto, Intention>().ReverseMap();
             CreateMap<Request, RequestDto>().
-                ForMember(dest=>dest.CityId, opt=>opt.MapFrom(src=>src.Intentions.FirstOrDefault().CityId)).
-                ForMember(dest=>dest.City, opt=>opt.MapFrom(src=>src.Intentions.FirstOrDefault().City)).
+                ForMember(dest=>dest.CityId, opt=>opt.MapFrom(src=>src.Intentions.First().CityId)).
+                ForMember(dest=>dest.City, opt=>opt.MapFrom(src=>src.Intentions.First().City)).
                 ReverseMap()
                 ;
 

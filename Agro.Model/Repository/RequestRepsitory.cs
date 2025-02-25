@@ -44,6 +44,8 @@ namespace Agro.Model.Repository
                 //.Include(r => r.City)
                 .Include(r => r.Intentions)
                 .ThenInclude(x => x.User)
+                .Include(r=>r.Intentions)
+                .ThenInclude(x=>x.City)
                 .FirstOrDefaultAsync(x => x.Id == id)
                 ;
         }
