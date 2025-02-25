@@ -344,3 +344,6 @@ WebApi/[Oo]bj/
 /WebApi/obj/Debug/net8.0/WebApi.GeneratedMSBuildEditorConfig.editorconfig
 /WebApi/[Bb]in/
 /WebApi/[Oo]bj/
+/WebApi/obj/Debug/net8.0/WebApi.csproj.FileListAbsolute.txt
+/WebApi/obj/Debug/net8.0/staticwebassets.build.json
+/WebApi/obj/Debug/net8.0/staticwebassets/msbuild.build.WebApi.props
