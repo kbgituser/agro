@@ -1,0 +1,36 @@
+﻿@using Agro.Model.Dto.MeatType
+@model List<MeatTypeDto>
+
+@{
+  ViewData["Title"] = "Index";
+}
+
+<h1>Вид мяса</h1>
+
+<p>
+  <a asp-action="Create">Создать</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.First().Name)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+          @Html.ActionLink("Изменить", "Edit", new { item.Id }) |
+          @Html.ActionLink("Удалить", "Delete", new { item.Id })
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

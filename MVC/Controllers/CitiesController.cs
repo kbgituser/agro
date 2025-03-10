@@ -1,10 +1,9 @@
 ﻿using Logic.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MVC.Controllers
 {
-    public class CitiesController : Controller
+  public class CitiesController : Controller
     {
         private readonly ICityService _cityService;
 

@@ -15,6 +15,8 @@ namespace Agro.Model.Interfaces
         IRequestRepository RequestRepository { get; }
 
         IOfferRepository OfferRepository { get; }
+        IMeatTypeRepository MeatTypeRepository { get; }
+
         UserManager<ApplicationUser> UserManager{get;}
         Task Commit();
         Task RejectChanges();

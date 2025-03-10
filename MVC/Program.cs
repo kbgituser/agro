@@ -1,4 +1,5 @@
 ﻿using Agro.Logic.Interfaces;
+using Agro.Logic.Services;
 using Agro.Model.Data;
 using Agro.Model.Entities;
 using Agro.Model.Interfaces;
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IIntentionService, IntentionService>();
 builder.Services.AddScoped<IRequestService, RequestService>();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<MeatTypeService>();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
